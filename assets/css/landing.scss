@@ -1,0 +1,64 @@
+.background {
+    height: 100vh;
+    background: url("/images/background.png") #74538b;
+    background-size: cover;
+}
+
+.ohio, .elixir {
+    float: left;
+    font-size: 1em;
+    color: white;
+}
+
+.ohio {
+    font-weight: 400;
+    margin-left: 3em;
+    margin-top: 3em;
+}
+
+.elixir {
+    font-weight: 700;
+    margin-top: 3em;
+}
+
+nav {
+    display: flex;
+}
+
+.nav-container {
+    position: absolute;
+    right: 0;
+
+    margin-left: 3em;
+    margin-top: 3em;
+    margin-right: 3em;
+}
+
+.nav-item {
+    float: left;
+    list-style: none;
+
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.nav-link {
+    color: white;
+    font-family: "Poppins";
+    font-weight: 500;
+}
+
+.title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    font-size: 5em;
+    font-weight: 700;
+    letter-spacing: 20px;
+    text-shadow: 2px 2px #252525;
+
+    color: white;
+}
+
