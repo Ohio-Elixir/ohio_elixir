@@ -1,0 +1,30 @@
+<h1>Listing Speakers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Twitter url</th>
+      <th>Github url</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for speaker <- @speakers do %>
+    <tr>
+      <td><%= speaker.name %></td>
+      <td><%= speaker.twitter_url %></td>
+      <td><%= speaker.github_url %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.speaker_path(@conn, :show, speaker) %></span>
+        <span><%= link "Edit", to: Routes.speaker_path(@conn, :edit, speaker) %></span>
+        <span><%= link "Delete", to: Routes.speaker_path(@conn, :delete, speaker), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Speaker", to: Routes.speaker_path(@conn, :new) %></span>

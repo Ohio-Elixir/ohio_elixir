@@ -1,0 +1,18 @@
+<h1>Show Meeting</h1>
+
+<ul>
+
+  <li>
+    <strong>Date:</strong>
+    <%= @meeting.date %>
+  </li>
+
+  <li>
+    <strong>Title:</strong>
+    <%= @meeting.title %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.meeting_path(@conn, :edit, @meeting) %></span>
+<span><%= link "Back", to: Routes.meeting_path(@conn, :index) %></span>

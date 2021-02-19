@@ -1,0 +1,23 @@
+<h1>Show Speaker</h1>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @speaker.name %>
+  </li>
+
+  <li>
+    <strong>Twitter url:</strong>
+    <%= @speaker.twitter_url %>
+  </li>
+
+  <li>
+    <strong>Github url:</strong>
+    <%= @speaker.github_url %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.speaker_path(@conn, :edit, @speaker) %></span>
+<span><%= link "Back", to: Routes.speaker_path(@conn, :index) %></span>
