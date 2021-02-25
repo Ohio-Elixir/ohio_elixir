@@ -6,7 +6,10 @@ defmodule OhioElixir.Events.Speaker do
     field :github_url, :string
     field :name, :string
     field :twitter_url, :string
-    many_to_many :meetings, OhioElixir.Events.Meeting, join_through: "speakers_meetings"
+
+    many_to_many :meetings, OhioElixir.Events.Meeting,
+      join_through: "speakers_meetings",
+      on_delete: :delete_all
 
     timestamps()
   end

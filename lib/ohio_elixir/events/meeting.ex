@@ -5,7 +5,11 @@ defmodule OhioElixir.Events.Meeting do
   schema "meetings" do
     field :date, :utc_datetime
     field :title, :string
-    many_to_many :speakers, OhioElixir.Events.Speaker, join_through: "speakers_meetings"
+
+    many_to_many :speakers, OhioElixir.Events.Speaker,
+      join_through: "speakers_meetings",
+      on_replace: :delete,
+      on_delete: :delete_all
 
     timestamps()
   end

@@ -4,9 +4,10 @@ defmodule OhioElixir.Events do
   """
 
   import Ecto.Query, warn: false
-  alias OhioElixir.Repo
 
+  alias OhioElixir.Repo
   alias OhioElixir.Events.Meeting
+  alias OhioElixir.Events.Speaker
 
   @doc """
   Returns the list of meetings.
@@ -73,6 +74,33 @@ defmodule OhioElixir.Events do
     |> Repo.update()
   end
 
+  def add_speaker_to_meeting(%Meeting{} = meeting, %Speaker{} = speaker) do
+    speakers_meeting =
+      from(sm in "speakers_meetings",
+        where: sm.speaker_id == ^speaker.id and sm.meeting_id == ^meeting.id,
+        select: sm.id
+      )
+      |> Repo.all()
+
+    if speakers_meeting == [] do
+      meeting
+      |> Ecto.Changeset.change()
+      |> Ecto.Changeset.put_assoc(:speakers, [speaker | meeting.speakers])
+      |> Repo.update()
+    else
+      {:ok, meeting}
+    end
+  end
+
+  def remove_speaker_from_meeting(%Meeting{} = meeting, %Speaker{} = speaker) do
+    new_speakers = Enum.filter(meeting.speakers, &(&1.id != speaker.id))
+
+    meeting
+    |> Ecto.Changeset.change()
+    |> Ecto.Changeset.put_assoc(:speakers, new_speakers)
+    |> Repo.update()
+  end
+
   @doc """
   Deletes a meeting.
 
@@ -101,8 +129,6 @@ defmodule OhioElixir.Events do
   def change_meeting(%Meeting{} = meeting, attrs \\ %{}) do
     Meeting.changeset(meeting, attrs)
   end
-
-  alias OhioElixir.Events.Speaker
 
   @doc """
   Returns the list of speakers.

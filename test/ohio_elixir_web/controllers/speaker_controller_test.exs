@@ -1,7 +1,6 @@
 defmodule OhioElixirWeb.SpeakerControllerTest do
   use OhioElixirWeb.ConnCase
-
-  alias OhioElixir.Events
+  import OhioElixir.EventsFixture
 
   @create_attrs %{
     github_url: "some github_url",
@@ -14,11 +13,6 @@ defmodule OhioElixirWeb.SpeakerControllerTest do
     twitter_url: "some updated twitter_url"
   }
   @invalid_attrs %{github_url: nil, name: nil, twitter_url: nil}
-
-  def fixture(:speaker) do
-    {:ok, speaker} = Events.create_speaker(@create_attrs)
-    speaker
-  end
 
   describe "index" do
     test "lists all speakers", %{conn: conn} do
@@ -91,7 +85,6 @@ defmodule OhioElixirWeb.SpeakerControllerTest do
   end
 
   defp create_speaker(_) do
-    speaker = fixture(:speaker)
-    %{speaker: speaker}
+    %{speaker: speaker_fixture()}
   end
 end

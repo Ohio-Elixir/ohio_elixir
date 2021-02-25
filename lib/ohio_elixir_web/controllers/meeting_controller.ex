@@ -27,14 +27,33 @@ defmodule OhioElixirWeb.MeetingController do
   end
 
   def show(conn, %{"id" => id}) do
-    meeting = Events.get_meeting!(id)
-    render(conn, "show.html", meeting: meeting)
+    meeting = Events.get_meeting!(id) |> OhioElixir.Repo.preload(:speakers)
+    changeset = Events.change_meeting(meeting)
+    speakers = Events.list_speakers()
+    render(conn, "show.html", meeting: meeting, changeset: changeset, speakers: speakers)
   end
 
   def edit(conn, %{"id" => id}) do
     meeting = Events.get_meeting!(id)
     changeset = Events.change_meeting(meeting)
     render(conn, "edit.html", meeting: meeting, changeset: changeset)
+  end
+
+  def update(conn, %{"id" => meeting_id, "meeting" => %{"speaker_id" => speaker_id}}) do
+    meeting = Events.get_meeting!(meeting_id) |> OhioElixir.Repo.preload(:speakers)
+    speaker = Events.get_speaker!(speaker_id)
+
+    case Events.add_speaker_to_meeting(meeting, speaker) do
+      {:ok, meeting} ->
+        conn
+        |> put_flash(:info, "Speaker added successfully.")
+        |> redirect(to: Routes.meeting_path(conn, :show, meeting))
+
+      {:error, %Ecto.Changeset{}} ->
+        conn
+        |> put_flash(:error, "Could not add speaker.")
+        |> redirect(to: Routes.meeting_path(conn, :show, meeting))
+    end
   end
 
   def update(conn, %{"id" => id, "meeting" => meeting_params}) do
@@ -48,6 +67,23 @@ defmodule OhioElixirWeb.MeetingController do
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", meeting: meeting, changeset: changeset)
+    end
+  end
+
+  def delete(conn, %{"id" => meeting_id, "speaker_id" => speaker_id}) do
+    meeting = Events.get_meeting!(meeting_id) |> OhioElixir.Repo.preload(:speakers)
+    speaker = Events.get_speaker!(speaker_id)
+
+    case Events.remove_speaker_from_meeting(meeting, speaker) do
+      {:ok, meeting} ->
+        conn
+        |> put_flash(:info, "Speaker removed successfully.")
+        |> redirect(to: Routes.meeting_path(conn, :show, meeting))
+
+      {:error, %Ecto.Changeset{}} ->
+        conn
+        |> put_flash(:error, "Could not add speaker.")
+        |> redirect(to: Routes.meeting_path(conn, :show, meeting))
     end
   end
 

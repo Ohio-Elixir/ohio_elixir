@@ -11,15 +11,6 @@ defmodule OhioElixir.EventsTest do
     @update_attrs %{date: "2011-05-18T15:01:01Z", title: "some updated title"}
     @invalid_attrs %{date: nil, title: nil}
 
-    def meeting_fixture(attrs \\ %{}) do
-      {:ok, meeting} =
-        attrs
-        |> Enum.into(@valid_attrs)
-        |> Events.create_meeting()
-
-      meeting
-    end
-
     test "list_meetings/0 returns all meetings" do
       meeting = meeting_fixture()
       assert Events.list_meetings() == [meeting]
@@ -53,6 +44,42 @@ defmodule OhioElixir.EventsTest do
       assert meeting == Events.get_meeting!(meeting.id)
     end
 
+    test "add_speaker_to_meeting/2 with valid data associates the given speaker and meeting" do
+      meeting = meeting_fixture() |> OhioElixir.Repo.preload(:speakers)
+      speaker = speaker_fixture()
+
+      assert {:ok, %Meeting{speakers: [^speaker]}} =
+               Events.add_speaker_to_meeting(meeting, speaker)
+    end
+
+    test "add_speaker_to_meeting/2 given a speaker and meeting already associated returns meeting" do
+      meeting = meeting_fixture() |> OhioElixir.Repo.preload(:speakers)
+      speaker = speaker_fixture()
+
+      assert {:ok, %Meeting{speakers: [^speaker]} = meeting} =
+               Events.add_speaker_to_meeting(meeting, speaker)
+
+      assert {:ok, %Meeting{speakers: [^speaker]}} =
+               Events.add_speaker_to_meeting(meeting, speaker)
+    end
+
+    test "remove_speaker_from_meeting/2 given a speaker and meeting removes the association" do
+      meeting = meeting_fixture() |> OhioElixir.Repo.preload(:speakers)
+      speaker = speaker_fixture()
+
+      assert {:ok, %Meeting{speakers: [^speaker]} = meeting} =
+               Events.add_speaker_to_meeting(meeting, speaker)
+
+      assert {:ok, %Meeting{speakers: []}} = Events.remove_speaker_from_meeting(meeting, speaker)
+    end
+
+    test "remove_speaker_from_meeting/2 given a speaker and meeting not associated returns meeting" do
+      meeting = meeting_fixture() |> OhioElixir.Repo.preload(:speakers)
+      speaker = speaker_fixture()
+
+      assert {:ok, %Meeting{speakers: []}} = Events.remove_speaker_from_meeting(meeting, speaker)
+    end
+
     test "delete_meeting/1 deletes the meeting" do
       meeting = meeting_fixture()
       assert {:ok, %Meeting{}} = Events.delete_meeting(meeting)
@@ -79,15 +106,6 @@ defmodule OhioElixir.EventsTest do
       twitter_url: "some updated twitter_url"
     }
     @invalid_attrs %{github_url: nil, name: nil, twitter_url: nil}
-
-    def speaker_fixture(attrs \\ %{}) do
-      {:ok, speaker} =
-        attrs
-        |> Enum.into(@valid_attrs)
-        |> Events.create_speaker()
-
-      speaker
-    end
 
     test "list_speakers/0 returns all speakers" do
       speaker = speaker_fixture()
