@@ -14,6 +14,8 @@ defmodule OhioElixirWeb.SpeakerControllerTest do
   }
   @invalid_attrs %{github_url: nil, name: nil, twitter_url: nil}
 
+  setup :register_and_log_in_user
+
   describe "index" do
     test "lists all speakers", %{conn: conn} do
       conn = get(conn, Routes.speaker_path(conn, :index))

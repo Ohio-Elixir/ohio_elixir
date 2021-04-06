@@ -1,12 +1,15 @@
 defmodule OhioElixirWeb.Router do
   use OhioElixirWeb, :router
 
+  import OhioElixirWeb.UserAuth
+
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug :fetch_current_user
   end
 
   pipeline :api do
@@ -17,8 +20,6 @@ defmodule OhioElixirWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
-    resources "/meetings", MeetingController
-    resources "/speakers", SpeakerController
   end
 
   # Other scopes may use custom stacks.
@@ -40,5 +41,27 @@ defmodule OhioElixirWeb.Router do
       pipe_through :browser
       live_dashboard "/dashboard", metrics: OhioElixirWeb.Telemetry
     end
+  end
+
+  ## Authentication routes
+
+  scope "/", OhioElixirWeb do
+    pipe_through [:browser, :redirect_if_user_is_authenticated]
+
+    get "/users/log_in", UserSessionController, :new
+    post "/users/log_in", UserSessionController, :create
+  end
+
+  scope "/", OhioElixirWeb do
+    pipe_through [:browser, :require_authenticated_user]
+
+    resources "/meetings", MeetingController
+    resources "/speakers", SpeakerController
+  end
+
+  scope "/", OhioElixirWeb do
+    pipe_through [:browser]
+
+    delete "/users/log_out", UserSessionController, :delete
   end
 end

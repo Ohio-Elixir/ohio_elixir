@@ -8,6 +8,8 @@ defmodule OhioElixirWeb.MeetingControllerTest do
   @update_attrs %{date: "2011-05-18T15:01:01Z", title: "some updated title"}
   @invalid_attrs %{date: nil, title: nil}
 
+  setup :register_and_log_in_user
+
   describe "index" do
     test "lists all meetings", %{conn: conn} do
       conn = get(conn, Routes.meeting_path(conn, :index))

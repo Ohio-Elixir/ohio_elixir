@@ -10,6 +10,7 @@
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
 
+alias OhioElixir.Accounts
 alias OhioElixir.Repo
 alias OhioElixir.Events
 alias OhioElixir.Events.Meeting
@@ -45,3 +46,6 @@ speaker_two =
 
 Events.add_speaker_to_meeting(meeting_one, speaker_one)
 Events.add_speaker_to_meeting(meeting_two, speaker_two)
+
+# User Creation
+Accounts.register_user(%{email: "user@example.com", password: "supersecretpassword"})
