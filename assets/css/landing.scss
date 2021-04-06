@@ -1,18 +1,16 @@
 .background {
-    height: 100vh;
-    background: url("/images/background.png") #74538b;
+    height:60vh;
     background-size: cover;
 }
 
 .ohio, .elixir {
     float: left;
     font-size: 1em;
-    color: white;
 }
 
 .ohio {
     font-weight: 400;
-    margin-left: 3em;
+    margin-left: 5em;
     margin-top: 3em;
 }
 
@@ -31,7 +29,7 @@ nav {
 
     margin-left: 3em;
     margin-top: 3em;
-    margin-right: 3em;
+    margin-right: 5em;
 }
 
 .nav-item {
@@ -43,7 +41,6 @@ nav {
 }
 
 .nav-link {
-    color: white;
     font-family: "Poppins";
     font-weight: 500;
 }
@@ -57,8 +54,7 @@ nav {
     font-size: 5em;
     font-weight: 700;
     letter-spacing: 20px;
-    text-shadow: 2px 2px #252525;
+    text-shadow: 2px 2px grey;
 
     color: white;
 }
-

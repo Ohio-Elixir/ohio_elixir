@@ -1,0 +1,44 @@
+
+<div class="meetings" id="meetings">
+  <div class="event-brite-widget" id="eventbrite-widget-container-149635663297"></div>
+
+  <script src="https://www.eventbrite.com/static/widgets/eb_widgets.js"></script>
+
+  <script type="text/javascript">
+      var exampleCallback = function() {
+          console.log('Order complete!');
+      };
+
+      window.EBWidgets.createWidget({
+          // Required
+          widgetType: 'checkout',
+          eventId: '149635663297',
+          iframeContainerId: 'eventbrite-widget-container-149635663297',
+
+          // Optional
+          iframeContainerHeight: 425,  // Widget height in pixels. Defaults to a minimum of 425px if not provided
+          onOrderComplete: exampleCallback  // Method called when an order has successfully completed
+      });
+  </script>
+
+  <div class="meeting-details">
+    <h2>meetings</h2>
+
+    <h3>upcoming meeting</h3>
+    <%= if @meeting do %>
+      <p><%= @meeting.title %></p>
+      <%= for speaker <- @meeting.speakers do %>
+        <p>
+          <%= speaker.name %>
+          <%= if speaker.twitter_url do %>
+            <%= link speaker.twitter_url, to: speaker.twitter_url %>
+          <% end %>
+          <%= if speaker.github_url do %>
+            <%= link speaker.github_url, to: speaker.github_url %>
+          <% end %>
+        </p>
+      <% end %>
+      <p><%= @meeting.date %></p>
+    <% end %>
+  </div>
+</div>

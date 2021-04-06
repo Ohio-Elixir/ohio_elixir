@@ -1,23 +1,25 @@
-<h1>Show Speaker</h1>
+<div class="container">
+  <h1>Show Speaker</h1>
 
-<ul>
+  <ul>
 
-  <li>
-    <strong>Name:</strong>
-    <%= @speaker.name %>
-  </li>
+    <li>
+      <strong>Name:</strong>
+      <%= @speaker.name %>
+    </li>
 
-  <li>
-    <strong>Twitter url:</strong>
-    <%= @speaker.twitter_url %>
-  </li>
+    <li>
+      <strong>Twitter url:</strong>
+      <%= @speaker.twitter_url %>
+    </li>
 
-  <li>
-    <strong>Github url:</strong>
-    <%= @speaker.github_url %>
-  </li>
+    <li>
+      <strong>Github url:</strong>
+      <%= @speaker.github_url %>
+    </li>
 
-</ul>
+  </ul>
 
-<span><%= link "Edit", to: Routes.speaker_path(@conn, :edit, @speaker) %></span>
-<span><%= link "Back", to: Routes.speaker_path(@conn, :index) %></span>
+  <span><%= link "Edit", to: Routes.speaker_path(@conn, :edit, @speaker) %></span>
+  <span><%= link "Back", to: Routes.speaker_path(@conn, :index) %></span>
+</div>

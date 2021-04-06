@@ -15,6 +15,27 @@
     <main role="main">
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+      <nav id="navbar">
+        <%= link to: "/" do %>
+          <span>
+            <p class="ohio">ohio</p>
+            <p class="elixir">elixir</p>
+          </span>
+        <% end %>
+        <div class="nav-container">
+          <ul class="nav-links">
+            <li class="nav-item"><a href="https://github.com/Ohio-Elixir/ohio_elixir" class="nav-link" target="_blank">Github</a></li>
+            <%= if function_exported?(Routes, :live_dashboard_path, 2) do %>
+              <li class="nav-item"><%= link "LiveDashboard", to: Routes.live_dashboard_path(@conn, :home), class: "nav-link" %></li>
+            <% end %>
+            <%= if @current_user do %>
+              <li class="nav-item"><%= link "Meetings", to: Routes.meeting_path(@conn, :index), class: "nav-link" %></li>
+              <li class="nav-item"><%= link "Speakers", to: Routes.speaker_path(@conn, :index), class: "nav-link" %></li>
+              <li class="nav-item"><%= link "Log out", to: Routes.user_session_path(@conn, :delete), method: :delete, class: "nav-link" %></li>
+            <% end %>
+          </ul>
+        </div>
+      </nav>
       <%= @inner_content %>
     </main>
   </body>

@@ -1,5 +1,7 @@
-<h1>Edit Speaker</h1>
+<div class="container">
+  <h1>Edit Speaker</h1>
 
-<%= render "form.html", Map.put(assigns, :action, Routes.speaker_path(@conn, :update, @speaker)) %>
+  <%= render "form.html", Map.put(assigns, :action, Routes.speaker_path(@conn, :update, @speaker)) %>
 
-<span><%= link "Back", to: Routes.speaker_path(@conn, :index) %></span>
+  <span><%= link "Back", to: Routes.speaker_path(@conn, :index) %></span>
+</div>

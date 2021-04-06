@@ -1,21 +1,9 @@
 <div class="background">
-  <nav>
-    <span>
-      <p class="ohio">ohio</p>
-      <p class="elixir">elixir</p>
-    </span>
-    <div class="nav-container">
-      <ul class="nav-links">
-        <li class="nav-item"><a href="https://hexdocs.pm/phoenix/overview.html" class="nav-link">Get Started</a></li>
-        <%= if function_exported?(Routes, :live_dashboard_path, 2) do %>
-          <li class="nav-item"><%= link "LiveDashboard", to: Routes.live_dashboard_path(@conn, :home), class: "nav-link" %></li>
-        <% end %>
-        <%= if @current_user do %>
-          <li class="nav-item"><%= link "Log out", to: Routes.user_session_path(@conn, :delete), method: :delete, class: "nav-link" %></li>
-        <% end %>
-      </ul>
-    </div>
-  </nav>
-
   <h1 class="title">OHIO ELIXIR<h1>
 </div>
+
+<img src="<%= Routes.static_path(@conn, "/images/transition.svg") %>" class="transition"/>
+
+<%= render "_about.html", conn: @conn %>
+<%= render "_meetings.html", conn: @conn, meeting: @meeting %>
+<%= render "_footer.html" %>

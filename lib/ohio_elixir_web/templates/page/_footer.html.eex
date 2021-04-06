@@ -1,0 +1,9 @@
+<div id="social-links">
+  <ul>
+    <li><i class="fab fa-slack"></i></li>
+    <li><i class="fab fa-github"></i></li>
+    <li><i class="fab fa-linkedin"></i></li>
+    <li><i class="fab fa-twitter-square"></i></li>
+    <li><i class="fab fa-youtube"></i></li>
+  </ul>
+</div>

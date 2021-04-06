@@ -1,28 +1,30 @@
-<h1>Listing Meetings</h1>
+<div class="container">
+  <h1>Listing Meetings</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Date</th>
-      <th>Title</th>
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Title</th>
 
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-<%= for meeting <- @meetings do %>
-    <tr>
-      <td><%= meeting.date %></td>
-      <td><%= meeting.title %></td>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+  <%= for meeting <- @meetings do %>
+      <tr>
+        <td><%= meeting.date %></td>
+        <td><%= meeting.title %></td>
 
-      <td>
-        <span><%= link "Show", to: Routes.meeting_path(@conn, :show, meeting) %></span>
-        <span><%= link "Edit", to: Routes.meeting_path(@conn, :edit, meeting) %></span>
-        <span><%= link "Delete", to: Routes.meeting_path(@conn, :delete, meeting), method: :delete, data: [confirm: "Are you sure?"] %></span>
-      </td>
-    </tr>
-<% end %>
-  </tbody>
-</table>
+        <td>
+          <span><%= link "Show", to: Routes.meeting_path(@conn, :show, meeting) %></span>
+          <span><%= link "Edit", to: Routes.meeting_path(@conn, :edit, meeting) %></span>
+          <span><%= link "Delete", to: Routes.meeting_path(@conn, :delete, meeting), method: :delete, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+  <% end %>
+    </tbody>
+  </table>
 
-<span><%= link "New Meeting", to: Routes.meeting_path(@conn, :new) %></span>
+  <span><%= link "New Meeting", to: Routes.meeting_path(@conn, :new) %></span>
+</div>
