@@ -18,6 +18,6 @@ defmodule OhioElixir.Events.Speaker do
   def changeset(speaker, attrs) do
     speaker
     |> cast(attrs, [:name, :twitter_url, :github_url])
-    |> validate_required([:name, :twitter_url, :github_url])
+    |> validate_required([:name])
   end
 end
