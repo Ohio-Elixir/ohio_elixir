@@ -17,8 +17,8 @@
         <td><%= meeting.title %></td>
 
         <td>
-          <span><%= link "Show", to: Routes.meeting_path(@conn, :show, meeting) %></span>
-          <span><%= link "Edit", to: Routes.meeting_path(@conn, :edit, meeting) %></span>
+          <span><%= link "Show", to: Routes.meeting_path(@conn, :show, meeting) %></span> |
+          <span><%= link "Edit", to: Routes.meeting_path(@conn, :edit, meeting) %></span> |
           <span><%= link "Delete", to: Routes.meeting_path(@conn, :delete, meeting), method: :delete, data: [confirm: "Are you sure?"] %></span>
         </td>
       </tr>

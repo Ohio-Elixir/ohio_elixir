@@ -19,7 +19,8 @@ defmodule OhioElixir.Events do
 
   """
   def list_meetings do
-    Repo.all(Meeting)
+    from(m in Meeting, order_by: [desc: m.date])
+    |> Repo.all()
   end
 
   @doc """

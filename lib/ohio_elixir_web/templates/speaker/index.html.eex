@@ -19,8 +19,8 @@
         <td><%= speaker.github_url %></td>
 
         <td>
-          <span><%= link "Show", to: Routes.speaker_path(@conn, :show, speaker) %></span>
-          <span><%= link "Edit", to: Routes.speaker_path(@conn, :edit, speaker) %></span>
+          <span><%= link "Show", to: Routes.speaker_path(@conn, :show, speaker) %></span> |
+          <span><%= link "Edit", to: Routes.speaker_path(@conn, :edit, speaker) %></span> |
           <span><%= link "Delete", to: Routes.speaker_path(@conn, :delete, speaker), method: :delete, data: [confirm: "Are you sure?"] %></span>
         </td>
       </tr>

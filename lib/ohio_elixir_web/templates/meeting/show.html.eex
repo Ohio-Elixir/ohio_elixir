@@ -25,6 +25,6 @@
 
   <%= render "add_speaker_form.html", Map.put(assigns, :action, Routes.meeting_path(@conn, :update, @meeting)) %>
 
-  <span><%= link "Edit", to: Routes.meeting_path(@conn, :edit, @meeting) %></span>
+  <span><%= link "Edit", to: Routes.meeting_path(@conn, :edit, @meeting) %></span> |
   <span><%= link "Back", to: Routes.meeting_path(@conn, :index) %></span>
 </div>

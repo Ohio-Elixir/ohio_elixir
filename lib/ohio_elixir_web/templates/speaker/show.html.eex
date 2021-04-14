@@ -20,6 +20,6 @@
 
   </ul>
 
-  <span><%= link "Edit", to: Routes.speaker_path(@conn, :edit, @speaker) %></span>
+  <span><%= link "Edit", to: Routes.speaker_path(@conn, :edit, @speaker) %></span> |
   <span><%= link "Back", to: Routes.speaker_path(@conn, :index) %></span>
 </div>
