@@ -5,6 +5,8 @@ defmodule OhioElixir.EventsFixture do
   """
 
   alias OhioElixir.Events
+  alias OhioElixir.Events.Meeting
+  alias OhioElixir.Repo
 
   def speaker_fixture(attrs \\ %{}) do
     valid_attrs = %{
@@ -24,10 +26,13 @@ defmodule OhioElixir.EventsFixture do
   def meeting_fixture(attrs \\ %{}) do
     valid_attrs = %{date: "2010-04-17T14:00:00Z", title: "some title"}
 
+    attrs = Enum.into(attrs, valid_attrs)
+
     {:ok, meeting} =
-      attrs
-      |> Enum.into(valid_attrs)
-      |> Events.create_meeting()
+      %Meeting{}
+      |> Meeting.changeset(attrs)
+      |> Meeting.change_active(attrs[:active])
+      |> Repo.insert()
 
     meeting
   end

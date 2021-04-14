@@ -39,6 +39,8 @@ defmodule OhioElixir.Events do
   """
   def get_meeting!(id), do: Repo.get!(Meeting, id)
 
+  def get_active_meeting(), do: Repo.get_by(Meeting, active: true)
+
   @doc """
   Creates a meeting.
 
@@ -72,6 +74,26 @@ defmodule OhioElixir.Events do
   def update_meeting(%Meeting{} = meeting, attrs) do
     meeting
     |> Meeting.changeset(attrs)
+    |> Repo.update()
+  end
+
+  def update_active_status(%Meeting{} = meeting, true) do
+    Repo.transaction(fn ->
+      if active_meeting = get_active_meeting() do
+        active_meeting
+        |> Meeting.change_active(false)
+        |> Repo.update!()
+      end
+
+      meeting
+      |> Meeting.change_active(true)
+      |> Repo.update!()
+    end)
+  end
+
+  def update_active_status(%Meeting{} = meeting, false) do
+    meeting
+    |> Meeting.change_active(false)
     |> Repo.update()
   end
 

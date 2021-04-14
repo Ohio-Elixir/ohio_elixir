@@ -24,6 +24,7 @@ defmodule OhioElixir.DataCase do
       import Ecto.Changeset
       import Ecto.Query
       import OhioElixir.DataCase
+      import OhioElixir.TestHelpers
     end
   end
 

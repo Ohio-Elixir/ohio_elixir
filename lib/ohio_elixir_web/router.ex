@@ -55,7 +55,10 @@ defmodule OhioElixirWeb.Router do
   scope "/", OhioElixirWeb do
     pipe_through [:browser, :require_authenticated_user]
 
-    resources "/meetings", MeetingController
+    resources "/meetings", MeetingController do
+      post "/activate", ActivationController, :create
+    end
+
     resources "/speakers", SpeakerController
   end
 

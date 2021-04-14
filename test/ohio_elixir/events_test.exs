@@ -21,6 +21,19 @@ defmodule OhioElixir.EventsTest do
       assert Events.get_meeting!(meeting.id) == meeting
     end
 
+    test "get_active_meeting/0 returns an active meeting" do
+      active_meeting = meeting_fixture(%{active: true})
+      _inactive_meeting = meeting_fixture(%{active: false})
+
+      assert Events.get_active_meeting() == active_meeting
+    end
+
+    test "get_active_meeting/0 returns nil if one does not exist" do
+      _inactive_meeting = meeting_fixture(%{active: false})
+
+      refute Events.get_active_meeting()
+    end
+
     test "create_meeting/1 with valid data creates a meeting" do
       assert {:ok, %Meeting{} = meeting} = Events.create_meeting(@valid_attrs)
       assert meeting.date == DateTime.from_naive!(~N[2010-04-17T14:00:00Z], "Etc/UTC")
@@ -42,6 +55,26 @@ defmodule OhioElixir.EventsTest do
       meeting = meeting_fixture()
       assert {:error, %Ecto.Changeset{}} = Events.update_meeting(meeting, @invalid_attrs)
       assert meeting == Events.get_meeting!(meeting.id)
+    end
+
+    test "update_active_status/2 updates a meeting to active" do
+      meeting = meeting_fixture()
+      assert {:ok, %Meeting{} = meeting} = Events.update_active_status(meeting, true)
+      assert meeting.active
+    end
+
+    test "update_active_status/2 deactivates the existing active meeting" do
+      active_meeting = meeting_fixture(%{active: true})
+      meeting = meeting_fixture()
+      assert {:ok, %Meeting{} = meeting} = Events.update_active_status(meeting, true)
+      assert meeting.active
+      refute reload(active_meeting).active
+    end
+
+    test "update_active_status/2 deactivates a meeting" do
+      active_meeting = meeting_fixture(%{active: true})
+      assert {:ok, %Meeting{} = meeting} = Events.update_active_status(active_meeting, false)
+      refute meeting.active
     end
 
     test "add_speaker_to_meeting/2 with valid data associates the given speaker and meeting" do

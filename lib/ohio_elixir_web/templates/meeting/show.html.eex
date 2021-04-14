@@ -11,6 +11,10 @@
       <%= @meeting.title %>
     </li>
     <li>
+      <strong>Active:</strong>
+      <%= @meeting.active %>
+    </li>
+    <li>
       <strong>Speakers:</strong>
       <ul>
         <%= for speaker <- @meeting.speakers do %>

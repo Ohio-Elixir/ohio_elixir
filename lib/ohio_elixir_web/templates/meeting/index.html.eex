@@ -6,6 +6,7 @@
       <tr>
         <th>Date</th>
         <th>Title</th>
+        <th>Active</th>
 
         <th></th>
       </tr>
@@ -15,6 +16,12 @@
       <tr>
         <td><%= meeting.date %></td>
         <td><%= meeting.title %></td>
+        <td>
+          <%# Using javascript to autosubmit this when checked %>
+          <%= form_for @conn, Routes.meeting_activation_path(@conn, :create, meeting), fn f -> %>
+            <%= checkbox f, :active, active_options(meeting.active) %>
+          <% end %>
+        </td>
 
         <td>
           <span><%= link "Show", to: Routes.meeting_path(@conn, :show, meeting) %></span> |
