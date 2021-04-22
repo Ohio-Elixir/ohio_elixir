@@ -1,9 +1,9 @@
 <div id="social-links">
   <ul>
-    <li><i class="fab fa-slack"></i></li>
-    <li><i class="fab fa-github"></i></li>
-    <li><i class="fab fa-linkedin"></i></li>
-    <li><i class="fab fa-twitter-square"></i></li>
-    <li><i class="fab fa-youtube"></i></li>
+    <li><a href="http://cbus-elixir-slackin.herokuapp.com/" target="_blank"><i class="fab fa-slack"></i></a></li>
+    <li><a href="https://github.com/Ohio-Elixir/ohio_elixir" target="_blank"><i class="fab fa-github"></i></a></li>
+    <li><a href="https://www.linkedin.com/groups/12304876/" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+    <li><a href="https://twitter.com/ohioelixir" target="_blank"><i class="fab fa-twitter-square"></i></a></li>
+    <li><a href="https://www.youtube.com/channel/UC9Sp7gOwPSK2jWuwtVMW4qw" target="_blank"><i class="fab fa-youtube"></i></a></li>
   </ul>
 </div>
