@@ -33,7 +33,7 @@
           <% end %>
         </p>
       <% end %>
-      <p><%= @meeting.date %></p>
+      <p><%= OhioElixirWeb.ViewHelpers.Date.format_date_time(@meeting.date) %></p>
     </div>
   </div>
 <% end %>

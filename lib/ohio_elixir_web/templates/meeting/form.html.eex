@@ -5,8 +5,8 @@
     </div>
   <% end %>
 
-  <%= label f, :date %>
-  <%= datetime_select f, :date %>
+  <%= label f, :date, "Date in UTC" %>
+  <%= datetime_local_input f, :date %>
   <%= error_tag f, :date %>
 
   <%= label f, :title %>
