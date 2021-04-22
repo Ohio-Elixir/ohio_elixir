@@ -10,15 +10,26 @@
   background-color: #d9edf7;
   border-color: #bce8f1;
 }
+
+.alert-info p {
+  background-color: #d9edf7;
+}
 .alert-warning {
   color: #8a6d3b;
   background-color: #fcf8e3;
   border-color: #faebcc;
 }
+
+.alert-warning p {
+  background-color: #fcf8e3;
+}
 .alert-danger {
   color: #a94442;
   background-color: #f2dede;
   border-color: #ebccd1;
+}
+.alert-danger p {
+  background-color: #f2dede;
 }
 .alert p {
   margin-bottom: 0;
