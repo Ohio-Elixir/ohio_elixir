@@ -19,14 +19,16 @@ alias OhioElixir.Events.Speaker
 meeting_one =
   Repo.insert!(%Meeting{
     title: "A really neat LiveView talk",
-    date: DateTime.utc_now() |> DateTime.truncate(:second)
+    date: DateTime.utc_now() |> DateTime.truncate(:second),
+    event_brite_id: 1_234_567_890
   })
   |> Repo.preload(:speakers)
 
 meeting_two =
   Repo.insert!(%Meeting{
     title: "The coolest Nerves presentation",
-    date: DateTime.utc_now() |> DateTime.truncate(:second)
+    date: DateTime.utc_now() |> DateTime.truncate(:second),
+    event_brite_id: 2_234_567_890
   })
   |> Repo.preload(:speakers)
 

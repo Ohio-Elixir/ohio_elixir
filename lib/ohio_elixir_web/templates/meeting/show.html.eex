@@ -11,6 +11,10 @@
       <%= @meeting.title %>
     </li>
     <li>
+      <strong>Event Brite ID:</strong>
+      <%= @meeting.event_brite_id %>
+    </li>
+    <li>
       <strong>Active:</strong>
       <%= @meeting.active %>
     </li>

@@ -4,7 +4,7 @@ defmodule OhioElixirWeb.MeetingControllerTest do
 
   alias OhioElixir.Events
 
-  @create_attrs %{date: "2010-04-17T14:00:00Z", title: "some title"}
+  @create_attrs %{date: "2010-04-17T14:00:00Z", title: "some title", event_brite_id: 12345}
   @update_attrs %{date: "2011-05-18T15:01:01Z", title: "some updated title"}
   @invalid_attrs %{date: nil, title: nil}
 

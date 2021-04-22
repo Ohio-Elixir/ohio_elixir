@@ -6,6 +6,7 @@ defmodule OhioElixir.Events.Meeting do
     field :date, :utc_datetime
     field :title, :string
     field :active, :boolean, default: false
+    field :event_brite_id, :integer
 
     many_to_many :speakers, OhioElixir.Events.Speaker,
       join_through: "speakers_meetings",
@@ -18,8 +19,8 @@ defmodule OhioElixir.Events.Meeting do
   @doc false
   def changeset(meeting, attrs) do
     meeting
-    |> cast(attrs, [:date, :title])
-    |> validate_required([:date, :title])
+    |> cast(attrs, [:date, :title, :event_brite_id])
+    |> validate_required([:date, :title, :event_brite_id])
   end
 
   def change_active(meeting, active) do

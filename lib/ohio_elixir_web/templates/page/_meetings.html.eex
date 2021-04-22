@@ -1,31 +1,26 @@
 
-<div class="meetings" id="meetings">
-  <div class="event-brite-widget" id="eventbrite-widget-container-149635663297"></div>
+<%= if @meeting do %>
+  <div class="meetings" id="meetings">
+    <div class="event-brite-widget" id=<%= "eventbrite-widget-container-#{@meeting.event_brite_id}" %>></div>
 
-  <script src="https://www.eventbrite.com/static/widgets/eb_widgets.js"></script>
+    <script src="https://www.eventbrite.com/static/widgets/eb_widgets.js"></script>
 
-  <script type="text/javascript">
-      var exampleCallback = function() {
-          console.log('Order complete!');
-      };
+    <script type="text/javascript">
+        window.EBWidgets.createWidget({
+            // Required
+            widgetType: 'checkout',
+            eventId: '<%= "#{@meeting.event_brite_id}" %>',
+            iframeContainerId: '<%= "eventbrite-widget-container-#{@meeting.event_brite_id}" %>',
 
-      window.EBWidgets.createWidget({
-          // Required
-          widgetType: 'checkout',
-          eventId: '149635663297',
-          iframeContainerId: 'eventbrite-widget-container-149635663297',
+            // Optional
+            iframeContainerHeight: 425,  // Widget height in pixels. Defaults to a minimum of 425px if not provided
+        });
+    </script>
 
-          // Optional
-          iframeContainerHeight: 425,  // Widget height in pixels. Defaults to a minimum of 425px if not provided
-          onOrderComplete: exampleCallback  // Method called when an order has successfully completed
-      });
-  </script>
+    <div class="meeting-details">
+      <h2>meetings</h2>
 
-  <div class="meeting-details">
-    <h2>meetings</h2>
-
-    <h3>upcoming meeting</h3>
-    <%= if @meeting do %>
+      <h3>upcoming meeting</h3>
       <p><%= @meeting.title %></p>
       <%= for speaker <- @meeting.speakers do %>
         <p>
@@ -39,6 +34,6 @@
         </p>
       <% end %>
       <p><%= @meeting.date %></p>
-    <% end %>
+    </div>
   </div>
-</div>
+<% end %>
