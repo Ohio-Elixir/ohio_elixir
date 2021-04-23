@@ -1,4 +1,5 @@
 defmodule OhioElixir.Events.Speaker do
+  @moduledoc false
   use Ecto.Schema
   import Ecto.Changeset
 

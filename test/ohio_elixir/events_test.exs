@@ -7,7 +7,7 @@ defmodule OhioElixir.EventsTest do
   describe "meetings" do
     alias OhioElixir.Events.Meeting
 
-    @valid_attrs %{date: "2010-04-17T14:00:00Z", title: "some title", event_brite_id: 12345}
+    @valid_attrs %{date: "2010-04-17T14:00:00Z", title: "some title", event_brite_id: 12_345}
     @update_attrs %{date: "2011-05-18T15:01:01Z", title: "some updated title"}
     @invalid_attrs %{date: nil, title: nil}
 

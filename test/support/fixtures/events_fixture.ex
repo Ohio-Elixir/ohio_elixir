@@ -24,7 +24,7 @@ defmodule OhioElixir.EventsFixture do
   end
 
   def meeting_fixture(attrs \\ %{}) do
-    valid_attrs = %{date: "2010-04-17T14:00:00Z", title: "some title", event_brite_id: 12345}
+    valid_attrs = %{date: "2010-04-17T14:00:00Z", title: "some title", event_brite_id: 12_345}
 
     attrs = Enum.into(attrs, valid_attrs)
 
