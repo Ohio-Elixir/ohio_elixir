@@ -1,20 +1,9 @@
 <div class="about" id="about">
   <h2>about</h2>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-  nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-  reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-  pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-  culpa qui officia deserunt mollit anim id est laborum.
-  <br><br>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-  nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-  reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-  pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-  culpa qui officia deserunt mollit anim id est laborum.
+  <p>
+    Ohio Elixir is a community group comprised of anyone and everyone interested in the Elixir ecosystem. We host monthly meetings where guest speakers present Elixir-related content, as well as occasional show and tell nights where anyone can talk about what they've been working on or ask questions.
+    <br><br>
+    At this time we are a fully remote organization which gives us the unique opportunity to open our virtual doors to folks outside of Ohio. RSVP for our upcoming meeting, join our slack, and come say "Hello!".
   </p>
 
   <img src="<%= Routes.static_path(@conn, "/images/pair-programming.svg") %>" class="pair-programming"/>
