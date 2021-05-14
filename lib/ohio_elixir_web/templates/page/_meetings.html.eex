@@ -24,12 +24,10 @@
       <p><%= @meeting.title %></p>
       <%= for speaker <- @meeting.speakers do %>
         <p>
-          <%= speaker.name %>
-          <%= if speaker.twitter_url do %>
-            <%= link speaker.twitter_url, to: speaker.twitter_url %>
-          <% end %>
-          <%= if speaker.github_url do %>
-            <%= link speaker.github_url, to: speaker.github_url %>
+          <%= if speaker.social_link do %>
+            <%= link speaker.name, to: speaker.social_link, target: "_blank" %>
+          <% else %>
+            <%= speaker.name %>
           <% end %>
         </p>
       <% end %>

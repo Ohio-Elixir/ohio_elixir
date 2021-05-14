@@ -9,13 +9,9 @@
   <%= text_input f, :name %>
   <%= error_tag f, :name %>
 
-  <%= label f, :twitter_url %>
-  <%= text_input f, :twitter_url %>
-  <%= error_tag f, :twitter_url %>
-
-  <%= label f, :github_url %>
-  <%= text_input f, :github_url %>
-  <%= error_tag f, :github_url %>
+  <%= label f, :social_link %>
+  <%= text_input f, :social_link %>
+  <%= error_tag f, :social_link %>
 
   <div>
     <%= submit "Save" %>

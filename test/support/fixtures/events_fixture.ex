@@ -10,9 +10,8 @@ defmodule OhioElixir.EventsFixture do
 
   def speaker_fixture(attrs \\ %{}) do
     valid_attrs = %{
-      github_url: "some github_url",
       name: "some name",
-      twitter_url: "some twitter_url"
+      social_link: "test_url"
     }
 
     {:ok, speaker} =

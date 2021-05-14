@@ -3,16 +3,14 @@ defmodule OhioElixirWeb.SpeakerControllerTest do
   import OhioElixir.EventsFixture
 
   @create_attrs %{
-    github_url: "some github_url",
     name: "some name",
-    twitter_url: "some twitter_url"
+    social_link: "some twitter_url"
   }
   @update_attrs %{
-    github_url: "some updated github_url",
     name: "some updated name",
-    twitter_url: "some updated twitter_url"
+    social_link: "some updated twitter_url"
   }
-  @invalid_attrs %{github_url: nil, name: nil, twitter_url: nil}
+  @invalid_attrs %{name: nil, social_link: nil}
 
   setup :register_and_log_in_user
 
@@ -64,7 +62,7 @@ defmodule OhioElixirWeb.SpeakerControllerTest do
       assert redirected_to(conn) == Routes.speaker_path(conn, :show, speaker)
 
       conn = get(conn, Routes.speaker_path(conn, :show, speaker))
-      assert html_response(conn, 200) =~ "some updated github_url"
+      assert html_response(conn, 200) =~ "some updated twitter_url"
     end
 
     test "renders errors when data is invalid", %{conn: conn, speaker: speaker} do
