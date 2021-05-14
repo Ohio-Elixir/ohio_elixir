@@ -20,6 +20,7 @@ defmodule OhioElixirWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    get "/past_meetings", PastMeetingsController, :index
   end
 
   # Other scopes may use custom stacks.

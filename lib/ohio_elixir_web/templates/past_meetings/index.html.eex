@@ -1,0 +1,22 @@
+<div class="container">
+  <h1>Past Meetings</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Title</th>
+        <th>Speakers<th>
+      </tr>
+    </thead>
+    <tbody>
+  <%= for meeting <- @meetings do %>
+      <tr>
+        <td><%= OhioElixirWeb.ViewHelpers.Date.format_date_time(meeting.date) %></td>
+        <td><%= meeting.title %></td>
+        <td><%= for speaker <- meeting.speakers, do: speaker_link(speaker) %></td>
+      </tr>
+  <% end %>
+    </tbody>
+  </table>
+</div>

@@ -19,8 +19,22 @@ defmodule OhioElixir.Events do
 
   """
   def list_meetings do
-    from(m in Meeting, order_by: [desc: m.date])
-    |> Repo.all()
+    from(m in Meeting, order_by: [desc: m.date]) |> Repo.all()
+  end
+
+  @doc """
+  Returns the list of previous meetings.
+
+  ## Examples
+
+      iex> list_past_meetings()
+      [%Meeting{}, ...]
+
+  """
+  def list_past_meetings do
+    today = DateTime.utc_now()
+
+    from(m in Meeting, order_by: [desc: m.date], where: m.date <= ^today) |> Repo.all()
   end
 
   @doc """
