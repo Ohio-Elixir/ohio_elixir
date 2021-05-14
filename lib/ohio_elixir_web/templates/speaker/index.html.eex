@@ -5,8 +5,7 @@
     <thead>
       <tr>
         <th>Name</th>
-        <th>Twitter url</th>
-        <th>Github url</th>
+        <th>Social Link</th>
 
         <th></th>
       </tr>
@@ -15,8 +14,7 @@
   <%= for speaker <- @speakers do %>
       <tr>
         <td><%= speaker.name %></td>
-        <td><%= speaker.twitter_url %></td>
-        <td><%= speaker.github_url %></td>
+        <td><%= speaker.social_link %></td>
 
         <td>
           <span><%= link "Show", to: Routes.speaker_path(@conn, :show, speaker) %></span> |

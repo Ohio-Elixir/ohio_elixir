@@ -9,13 +9,8 @@
     </li>
 
     <li>
-      <strong>Twitter url:</strong>
-      <%= @speaker.twitter_url %>
-    </li>
-
-    <li>
-      <strong>Github url:</strong>
-      <%= @speaker.github_url %>
+      <strong>Social Link:</strong>
+      <%= @speaker.social_link %>
     </li>
 
   </ul>

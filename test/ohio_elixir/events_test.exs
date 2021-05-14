@@ -16,6 +16,13 @@ defmodule OhioElixir.EventsTest do
       assert Events.list_meetings() == [meeting]
     end
 
+    test "list_past_meetings/0 only returns meetings from the past" do
+      _future_meeting = meeting_fixture(%{date: DateTime.add(DateTime.utc_now(), 3600)})
+      past_meeting_one = meeting_fixture(%{date: "2021-04-17T14:00:00Z"})
+      past_meeting_two = meeting_fixture(%{date: "2021-03-17T14:00:00Z"})
+      assert Events.list_past_meetings() == [past_meeting_one, past_meeting_two]
+    end
+
     test "get_meeting!/1 returns the meeting with given id" do
       meeting = meeting_fixture()
       assert Events.get_meeting!(meeting.id) == meeting
@@ -129,16 +136,14 @@ defmodule OhioElixir.EventsTest do
     alias OhioElixir.Events.Speaker
 
     @valid_attrs %{
-      github_url: "some github_url",
       name: "some name",
-      twitter_url: "some twitter_url"
+      social_link: "some twitter_url"
     }
     @update_attrs %{
-      github_url: "some updated github_url",
       name: "some updated name",
-      twitter_url: "some updated twitter_url"
+      social_link: "some updated twitter_url"
     }
-    @invalid_attrs %{github_url: nil, name: nil, twitter_url: nil}
+    @invalid_attrs %{name: nil, social_link: nil}
 
     test "list_speakers/0 returns all speakers" do
       speaker = speaker_fixture()
@@ -152,9 +157,8 @@ defmodule OhioElixir.EventsTest do
 
     test "create_speaker/1 with valid data creates a speaker" do
       assert {:ok, %Speaker{} = speaker} = Events.create_speaker(@valid_attrs)
-      assert speaker.github_url == "some github_url"
       assert speaker.name == "some name"
-      assert speaker.twitter_url == "some twitter_url"
+      assert speaker.social_link == "some twitter_url"
     end
 
     test "create_speaker/1 with invalid data returns error changeset" do
@@ -164,9 +168,8 @@ defmodule OhioElixir.EventsTest do
     test "update_speaker/2 with valid data updates the speaker" do
       speaker = speaker_fixture()
       assert {:ok, %Speaker{} = speaker} = Events.update_speaker(speaker, @update_attrs)
-      assert speaker.github_url == "some updated github_url"
       assert speaker.name == "some updated name"
-      assert speaker.twitter_url == "some updated twitter_url"
+      assert speaker.social_link == "some updated twitter_url"
     end
 
     test "update_speaker/2 with invalid data returns error changeset" do
