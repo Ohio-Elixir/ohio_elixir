@@ -35,13 +35,13 @@ meeting_two =
 speaker_one =
   Repo.insert!(%Speaker{
     name: "Jane Doe",
-    social_link: "github.com/janedoe"
+    social_link: "https:/github.com/janedoe"
   })
 
 speaker_two =
   Repo.insert!(%Speaker{
     name: "John Doe",
-    social_link: "github.com/janedoe"
+    social_link: "https:/github.com/janedoe"
   })
 
 Events.add_speaker_to_meeting(meeting_one, speaker_one)
