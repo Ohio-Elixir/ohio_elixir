@@ -1,4 +1,3 @@
-
 <%= if @meeting do %>
   <div class="meetings" id="meetings">
     <div class="event-brite-widget" id=<%= "eventbrite-widget-container-#{@meeting.event_brite_id}" %>></div>
@@ -18,8 +17,6 @@
     </script>
 
     <div class="meeting-details">
-      <h2>meetings</h2>
-
       <h3>upcoming meeting</h3>
       <p><%= @meeting.title %></p>
       <%= for speaker <- @meeting.speakers do %>
