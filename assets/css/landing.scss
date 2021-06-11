@@ -1,58 +1,66 @@
 .background {
-    height:60vh;
-    background-size: cover;
+  height: 60vh;
+  background-size: cover;
 }
 
-.ohio, .elixir {
-    float: left;
-    font-size: 1em;
+.ohio,
+.elixir {
+  float: left;
+  font-size: 1em;
 }
 
 .ohio {
-    font-weight: 400;
-    margin-left: 5em;
-    margin-top: 3em;
+  font-weight: 400;
+  margin-left: 5em;
+  margin-top: 3em;
 }
 
 .elixir {
-    font-weight: 700;
-    margin-top: 3em;
+  font-weight: 700;
+  margin-top: 3em;
 }
 
 .nav-container {
-    position: absolute;
-    right: 0;
+  position: absolute;
+  right: 0;
 
-    margin-left: 3em;
-    margin-top: 3em;
-    margin-right: 5em;
+  margin-left: 3em;
+  margin-top: 3em;
+  margin-right: 5em;
 }
 
 .nav-item {
-    float: left;
-    list-style: none;
+  float: left;
+  list-style: none;
 
-    padding-left: 1em;
-    padding-right: 1em;
+  padding-left: 1em;
+  padding-right: 1em;
 }
 
 .nav-link {
-    font-family: "Poppins";
-    font-weight: 500;
+  font-family: "Poppins";
+  font-weight: 500;
 }
 
 .title {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
-    font-size: 5em;
-    font-weight: 700;
-    letter-spacing: 20px;
-    text-shadow: 2px 2px grey;
+  font-size: 5em;
+  font-weight: 700;
+  letter-spacing: 20px;
+  text-shadow: 2px 2px grey;
+  text-align: center;
 
-    color: white;
+  color: white;
+}
+
+.last-letter {
+  letter-spacing: 0;
+
+  color: white;
 }
 
 /* Style the navbar */
@@ -88,7 +96,7 @@
   margin: 0 auto;
   margin-top: 12em;
   max-width: 70%;
-  padding: 0 2.0rem;
+  padding: 0 2rem;
   width: 100%;
 
   display: grid;
@@ -116,7 +124,7 @@
   margin: 0 auto;
   margin-top: 12em;
   max-width: 70%;
-  padding: 0 2.0rem;
+  padding: 0 2rem;
   width: 100%;
 
   display: grid;
@@ -140,14 +148,112 @@
 }
 
 #social-links ul {
-    display: flex;
-    justify-content: center;
-    list-style: none;
+  display: flex;
+  justify-content: center;
+  list-style: none;
 }
 
 #social-links li {
+  padding-left: 1em;
+  padding-right: 1em;
+
+  font-size: 1.8em;
+}
+
+//nav
+.hamburger {
+  display: none;
+}
+
+.bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px 0;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background-color: #000000;
+}
+
+// mobile things
+
+@media only screen and (max-width: 1050px) {
+  .ohio {
+    margin-left: 2em;
+  }
+
+  .ohio,
+  .elixir {
+    margin-top: 2em;
+  }
+
+  .hamburger {
+    display: block;
+    cursor: pointer;
+    position: fixed;
+    right: 2em;
+    margin-top: 0em;
+  }
+
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    left: -100%;
+    top: 5rem;
+    flex-direction: column;
+    background-color: #f6f6f6;
+    width: 100%;
+    border-radius: 10px;
+    text-align: center;
+    transition: 0.3s;
+    box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+    margin-top: 2em;
+  }
+
+  .nav-links.active {
+    left: 0;
+    z-index: 10;
+  }
+
+  .nav-item {
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: #475569;
+  }
+
+  .title {
+    font-size: 4em;
+  }
+
+  .about {
+    display: block;
+    column-gap: 0em;
+  }
+
+  .about p {
+    text-align: justify;
+  }
+
+  .about h2 {
+    text-align: center;
+  }
+
+  .transition {
+    display: none;
+  }
+
+  #social-links li {
     padding-left: 1em;
     padding-right: 1em;
 
-    font-size: 1.8em;
+    font-size: 1.2em;
+  }
 }
