@@ -16,6 +16,26 @@ config :ohio_elixir, OhioElixirWeb.Endpoint,
 # Do not print debug messages in production
 config :logger, level: :info
 
+# Gigalixir Config
+config :ohio_elixir, OhioElixirWeb.Endpoint,
+  # Possibly not needed, but doesn't hurt
+  http: [port: {:system, "PORT"}],
+  url: [host: System.get_env("APP_NAME") <> ".gigalixirapp.com", port: 443],
+  secret_key_base: Map.fetch!(System.get_env(), "SECRET_KEY_BASE"),
+  server: true
+
+config :ohio_elixir, OhioElixir.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  url: System.get_env("DATABASE_URL"),
+  ssl: true,
+  # We recommend setting the pool size to (M-6)/(n+1) where M is the max
+  # connections and n is the num app replicas. We subtract 6 because
+  # cloud sql will sometimes, but rarely, use 6 for maintenance purposes.
+  # We use n+1 because rolling deploys will temporarily have an extra
+  # replica during the transition. For example, if you are running a size
+  # 0.6 database with 1 app replica, the pool size should be (25-6)/(1+1)=9.
+  pool_size: 9
+
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key
