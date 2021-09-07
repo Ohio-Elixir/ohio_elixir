@@ -25,7 +25,7 @@
         <div class="nav-container">
           <ul class="nav-links">
             <li class="nav-item"><a href="https://github.com/Ohio-Elixir/ohio_elixir" class="nav-link" target="_blank">Github</a></li>
-            <li class="nav-item"><a href="http://cbus-elixir-slackin.herokuapp.com/" class="nav-link" target="_blank">Slack</a></li>
+            <li class="nav-item"><a href="https://join.slack.com/t/cbus-elixir/shared_invite/zt-u82fdy5d-f7inuCHS_r54mAgUXWtG~Q" class="nav-link" target="_blank">Slack</a></li>
             <li class="nav-item"><a href="https://twitter.com/ohioelixir" class="nav-link" target="_blank">Twitter</a></li>
             <li class="nav-item"><%= link "Past Meetings", to: Routes.past_meetings_path(@conn, :index), class: "nav-link" %></li>
             <%= if function_exported?(Routes, :live_dashboard_path, 2) do %>
