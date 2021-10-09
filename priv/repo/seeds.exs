@@ -26,8 +26,12 @@ meeting_one =
 
 meeting_two =
   Repo.insert!(%Meeting{
+    active: true,
     title: "The coolest Nerves presentation",
-    date: DateTime.utc_now() |> DateTime.truncate(:second),
+    date:
+      DateTime.utc_now()
+      |> DateTime.add(86_400 * 30, :second)
+      |> DateTime.truncate(:second),
     event_brite_id: 2_234_567_890
   })
   |> Repo.preload(:speakers)
