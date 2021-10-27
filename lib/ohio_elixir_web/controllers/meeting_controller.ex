@@ -34,7 +34,7 @@ defmodule OhioElixirWeb.MeetingController do
   end
 
   def edit(conn, %{"id" => id}) do
-    meeting = Events.get_meeting!(id)
+    meeting = id |> Events.get_meeting!() |> date_to_naive()
     changeset = Events.change_meeting(meeting)
     render(conn, "edit.html", meeting: meeting, changeset: changeset)
   end
@@ -94,5 +94,9 @@ defmodule OhioElixirWeb.MeetingController do
     conn
     |> put_flash(:info, "Meeting deleted successfully.")
     |> redirect(to: Routes.meeting_path(conn, :index))
+  end
+
+  defp date_to_naive(meeting) do
+    %{meeting | date: DateTime.to_naive(meeting.date)}
   end
 end

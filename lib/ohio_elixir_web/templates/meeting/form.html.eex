@@ -6,7 +6,7 @@
   <% end %>
 
   <%= label f, :date, "Date in UTC" %>
-  <%= datetime_local_input f, :date, value: DateTime.to_naive(f.data.date) %>
+  <%= datetime_local_input f, :date %>
   <%= error_tag f, :date %>
 
   <%= label f, :title %>
