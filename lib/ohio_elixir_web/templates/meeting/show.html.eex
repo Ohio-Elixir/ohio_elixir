@@ -4,7 +4,7 @@
   <ul>
     <li>
       <strong>Date:</strong>
-      <%= @meeting.date %>
+      <%= OhioElixirWeb.ViewHelpers.Date.format_date_time(@meeting.date) %>
     </li>
     <li>
       <strong>Title:</strong>
