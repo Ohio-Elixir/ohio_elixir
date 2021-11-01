@@ -91,6 +91,43 @@ defmodule OhioElixir.AccountsTest do
     end
   end
 
+  describe "change_user_password/2" do
+    test "returns a user changeset" do
+      assert %Ecto.Changeset{} = changeset = Accounts.change_user_password(%User{})
+      assert changeset.required == [:password]
+    end
+
+    test "allows fields to be set" do
+      changeset =
+        Accounts.change_user_password(%User{}, %{
+          "password" => "new valid password"
+        })
+
+      assert changeset.valid?
+      assert get_change(changeset, :password) == "new valid password"
+      assert is_nil(get_change(changeset, :hashed_password))
+    end
+  end
+
+  describe "update_user_password/3" do
+    setup do
+      %{user: user_fixture()}
+    end
+
+    test "validates password", %{user: user} do
+      {:error, changeset} =
+        Accounts.update_user_password(user, valid_user_password(), %{
+          password: "not valid",
+          password_confirmation: "another"
+        })
+
+      assert %{
+               password: ["should be at least 12 character(s)"],
+               password_confirmation: ["does not match password"]
+             } = errors_on(changeset)
+    end
+  end
+
   describe "generate_user_session_token/1" do
     setup do
       %{user: user_fixture()}
