@@ -14,7 +14,7 @@
     <tbody>
   <%= for meeting <- @meetings do %>
       <tr>
-        <td><%= meeting.date %></td>
+        <td><%= OhioElixirWeb.ViewHelpers.Date.format_date_time(meeting.date) %></td>
         <td><%= meeting.title %></td>
         <td>
           <%# Using javascript to autosubmit this when checked %>

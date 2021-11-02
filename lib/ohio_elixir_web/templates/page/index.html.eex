@@ -1,5 +1,5 @@
 <div class="background">
-  <h1 class="title">OHIO ELIXI<span class="last-letter">R</span><h1>
+  <h1 class="title">OHIO ELIXI<span class="last-letter">R</span></h1>
 </div>
 
 <img src="<%= Routes.static_path(@conn, "/images/transition.svg") %>" class="transition"/>
