@@ -51,16 +51,16 @@
   font-size: 5em;
   font-weight: 700;
   letter-spacing: 20px;
-  text-shadow: 2px 2px grey;
+  text-shadow: 2px 2px #cc7be3;
   text-align: center;
 
-  color: white;
+  color: #ecd5f1;
 }
 
 .last-letter {
   letter-spacing: 0;
 
-  color: white;
+  color: #ecd5f1;
 }
 
 /* Style the navbar */
@@ -288,7 +288,7 @@
     grid-column: 1/2;
     grid-row: 2/3;
     justify-self: center;
-  } 
+  }
 
   .meetings {
     grid-template-columns: 1fr;
@@ -322,6 +322,6 @@
     grid-column: 1/2;
     grid-row: 2/3;
     justify-self: center;
-  } 
+  }
 
 }
