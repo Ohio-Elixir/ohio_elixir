@@ -35,6 +35,7 @@
             <%= if @current_user do %>
               <li class="nav-item"><%= link "Meetings", to: Routes.meeting_path(@conn, :index), class: "nav-link" %></li>
               <li class="nav-item"><%= link "Speakers", to: Routes.speaker_path(@conn, :index), class: "nav-link" %></li>
+              <li class="nav-item"><%= link "Account Settings", to: Routes.user_settings_path(@conn, :edit), class: "nav-link" %></li>
               <li class="nav-item"><%= link "Log out", to: Routes.user_session_path(@conn, :delete), method: :delete, class: "nav-link" %></li>
             <% end %>
           </ul>

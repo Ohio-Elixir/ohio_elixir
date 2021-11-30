@@ -56,6 +56,9 @@ defmodule OhioElixirWeb.Router do
   scope "/", OhioElixirWeb do
     pipe_through [:browser, :require_authenticated_user]
 
+    get "/users/settings", UserSettingsController, :edit
+    put "/users/settings", UserSettingsController, :update
+
     resources "/meetings", MeetingController do
       post "/activate", ActivationController, :create
     end
