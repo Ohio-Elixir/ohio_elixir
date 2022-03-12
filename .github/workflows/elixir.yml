@@ -13,7 +13,7 @@ jobs:
 
     strategy:
       matrix:
-        elixir: [1.12.1]
+        elixir: [1.13.3]
         otp: [24]
 
     services:
