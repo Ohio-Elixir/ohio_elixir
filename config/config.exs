@@ -5,7 +5,7 @@
 # is restricted to this project.
 
 # General application configuration
-use Mix.Config
+import Config
 
 config :ohio_elixir,
   ecto_repos: [OhioElixir.Repo]
