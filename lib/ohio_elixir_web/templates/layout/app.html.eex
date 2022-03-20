@@ -26,6 +26,7 @@
           <ul class="nav-links">
             <li class="nav-item"><a href="https://github.com/Ohio-Elixir/ohio_elixir" class="nav-link" target="_blank">Github</a></li>
             <li class="nav-item"><a href="https://join.slack.com/t/cbus-elixir/shared_invite/zt-u82fdy5d-f7inuCHS_r54mAgUXWtG~Q" class="nav-link" target="_blank">Slack</a></li>
+            <li class="nav-item"><a href="https://discord.gg/JVVSwSNpK6" class="nav-link" target="_blank">Discord</a></li>
             <li class="nav-item"><a href="https://twitter.com/ohioelixir" class="nav-link" target="_blank">Twitter</a></li>
             <li class="nav-item"><%= link "Next Meeting", to: "#{Routes.page_path(@conn, :index)}#meetings", class: "nav-link" %></li>
             <li class="nav-item"><%= link "Past Meetings", to: Routes.past_meetings_path(@conn, :index), class: "nav-link" %></li>
