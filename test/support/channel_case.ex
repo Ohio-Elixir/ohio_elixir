@@ -17,6 +17,9 @@ defmodule OhioElixirWeb.ChannelCase do
 
   use ExUnit.CaseTemplate
 
+  alias Ecto.Adapters.SQL.Sandbox
+  alias OhioElixir.Repo
+
   using do
     quote do
       # Import conveniences for testing with channels
@@ -29,10 +32,10 @@ defmodule OhioElixirWeb.ChannelCase do
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(OhioElixir.Repo)
+    :ok = Sandbox.checkout(Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(OhioElixir.Repo, {:shared, self()})
+      Sandbox.mode(Repo, {:shared, self()})
     end
 
     :ok

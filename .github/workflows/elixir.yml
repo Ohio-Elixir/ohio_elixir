@@ -54,8 +54,8 @@ jobs:
       - name: Check Formatting
         run: mix format --check-formatted
 
-      - name: Run Credo
-        run: mix credo
+      - name: Run Credo (strict)
+        run: mix credo --strict
 
       - name: Run tests
         run: mix test

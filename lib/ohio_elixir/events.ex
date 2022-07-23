@@ -5,9 +5,12 @@ defmodule OhioElixir.Events do
 
   import Ecto.Query, warn: false
 
+  alias OhioElixir.Events.{
+    Meeting,
+    Speaker
+  }
+
   alias OhioElixir.Repo
-  alias OhioElixir.Events.Meeting
-  alias OhioElixir.Events.Speaker
 
   @doc """
   Returns the list of meetings.
@@ -53,7 +56,7 @@ defmodule OhioElixir.Events do
   """
   def get_meeting!(id), do: Repo.get!(Meeting, id)
 
-  def get_active_meeting(), do: Repo.get_by(Meeting, active: true)
+  def get_active_meeting, do: Repo.get_by(Meeting, active: true)
 
   @doc """
   Creates a meeting.
