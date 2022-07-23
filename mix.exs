@@ -34,19 +34,19 @@ defmodule OhioElixir.MixProject do
   defp deps do
     [
       {:bcrypt_elixir, "~> 3.0"},
-      {:credo, "~> 1.5", only: [:dev, :test], runtime: false},
+      {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
       {:dialyxir, "~> 1.1", only: [:dev], runtime: false},
-      {:ecto_sql, "~> 3.4"},
-      {:gettext, "~> 0.11"},
-      {:jason, "~> 1.0"},
-      {:phoenix, "~> 1.6.0"},
-      {:phoenix_ecto, "~> 4.1"},
+      {:ecto_sql, "~> 3.6"},
+      {:gettext, "~> 0.18"},
+      {:jason, "~> 1.3"},
+      {:phoenix, "~> 1.6.9"},
+      {:phoenix_ecto, "~> 4.4"},
       {:phoenix_html, "~> 3.2"},
-      {:phoenix_live_dashboard, "~> 0.4"},
+      {:phoenix_live_dashboard, "~> 0.6"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
-      {:plug_cowboy, "~> 2.0"},
+      {:plug_cowboy, "~> 2.5"},
       {:postgrex, ">= 0.0.0"},
-      {:telemetry_metrics, "~> 0.4"},
+      {:telemetry_metrics, "~> 0.6"},
       {:telemetry_poller, "~> 1.0"},
       {:tzdata, "~> 1.1"}
     ]
