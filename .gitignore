@@ -36,3 +36,4 @@ npm-debug.log
 # Ignoring PLTs for dialyzer
 /priv/plts/*.plt
 /priv/plts/*.plt.hash
+config/*.secret.exs
