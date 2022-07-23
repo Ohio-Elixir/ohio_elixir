@@ -74,3 +74,14 @@ config :phoenix, :stacktrace_depth, 20
 
 # Initialize plugs at runtime for faster development compilation
 config :phoenix, :plug_init_mode, :runtime
+
+# To enable the discord bot, add the following lines to a new or existing dev.secret.exs file:
+# config :ohio_elixir, OhioElixir.DiscordBot,
+#   enabled: true
+
+# config :nostrum,
+#   token: "[YOUR DISCORD BOT API TOKEN HERE]"
+
+if File.exists?(Path.join(File.cwd!(), "config/dev.secret.exs")) do
+  import_config(Path.join(File.cwd!(), "config/dev.secret.exs"))
+end
