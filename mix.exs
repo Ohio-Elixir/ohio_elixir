@@ -46,6 +46,7 @@ defmodule OhioElixir.MixProject do
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:plug_cowboy, "~> 2.5"},
       {:postgrex, ">= 0.0.0"},
+      {:sobelow, "~> 0.8", only: :dev},
       {:telemetry_metrics, "~> 0.6"},
       {:telemetry_poller, "~> 1.0"},
       {:tzdata, "~> 1.1"}

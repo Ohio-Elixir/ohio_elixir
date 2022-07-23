@@ -57,6 +57,9 @@ jobs:
       - name: Run Credo (strict)
         run: mix credo --strict
 
+      - name: Run security statis analysis
+        run: mix sobelow --strict
+
       - name: Run tests
         run: mix test
 
