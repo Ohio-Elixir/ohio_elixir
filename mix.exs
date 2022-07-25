@@ -53,7 +53,8 @@ defmodule OhioElixir.MixProject do
       {:tzdata, "~> 1.1"},
 
       # Temporary things to work around silliness between Discord's API and
-      # gun's http handling
+      # gun's http handling (see
+      # https://github.com/bdanklin/cowlib#about-the-fork)
       {:cowlib, "~> 2.11.1", env: :prod, hex: "remedy_cowlib", override: true}
     ]
   end
