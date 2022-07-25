@@ -16,6 +16,4 @@ defmodule OhioElixirBot.DiscordBot do
   def handle_event(event) do
     Logger.debug("unhandled event: #{inspect(event)}")
   end
-
-  end
 end
