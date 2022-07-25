@@ -39,6 +39,7 @@ defmodule OhioElixir.MixProject do
       {:ecto_sql, "~> 3.6"},
       {:gettext, "~> 0.18"},
       {:jason, "~> 1.3"},
+      {:nostrum, "~> 0.6", runtime: false},
       {:phoenix, "~> 1.6.9"},
       {:phoenix_ecto, "~> 4.4"},
       {:phoenix_html, "~> 3.2"},
@@ -49,7 +50,11 @@ defmodule OhioElixir.MixProject do
       {:sobelow, "~> 0.8", only: :dev},
       {:telemetry_metrics, "~> 0.6"},
       {:telemetry_poller, "~> 1.0"},
-      {:tzdata, "~> 1.1"}
+      {:tzdata, "~> 1.1"},
+
+      # Temporary things to work around silliness between Discord's API and
+      # gun's http handling
+      {:cowlib, "~> 2.11.1", env: :prod, hex: "remedy_cowlib", override: true}
     ]
   end
 
