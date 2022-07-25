@@ -35,10 +35,10 @@ defmodule OhioElixir.Application do
   end
 
   defp maybe_start_discord_bot do
-    if should_start?(OhioElixir.DiscordBot) do
+    if should_start?(OhioElixirBot.DiscordBot) do
       {:ok, _} = Application.ensure_all_started(:nostrum)
 
-      [OhioElixir.DiscordBot]
+      [OhioElixirBot.DiscordBot]
     else
       []
     end

@@ -76,7 +76,7 @@ config :phoenix, :stacktrace_depth, 20
 config :phoenix, :plug_init_mode, :runtime
 
 # To enable the discord bot, add the following lines to a new or existing dev.secret.exs file:
-# config :ohio_elixir, OhioElixir.DiscordBot,
+# config :ohio_elixir, OhioElixirBot.DiscordBot,
 #   enabled: true
 
 # config :nostrum,

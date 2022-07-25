@@ -30,6 +30,11 @@ config :ohio_elixir, OhioElixirWeb.Endpoint,
   ],
   secret_key_base: secret_key_base
 
+config :ohio_elixir, OhioElixirBot.DiscordBot, enabled: true
+
+config :nostrum,
+  token: System.get_env("DISCORD_BOT_TOKEN")
+
 # ## Using releases (Elixir v1.9+)
 #
 # If you are doing OTP releases, you need to instruct Phoenix
