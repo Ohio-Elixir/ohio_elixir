@@ -5,6 +5,7 @@ defmodule OhioElixir.MixProject do
     [
       app: :ohio_elixir,
       version: "0.1.0",
+      dialyzer: [plt_add_apps: [:nostrum]],
       elixir: "~> 1.13.3",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix] ++ Mix.compilers(),
@@ -20,7 +21,8 @@ defmodule OhioElixir.MixProject do
   def application do
     [
       mod: {OhioElixir.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools],
+      included_applications: [:nostrum]
     ]
   end
 
