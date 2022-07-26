@@ -9,7 +9,12 @@ defmodule OhioElixirWeb.Router do
     plug :fetch_session
     plug :fetch_flash
     plug :protect_from_forgery
-    plug :put_secure_browser_headers, %{"content-security-policy" => "default-src 'self'"}
+
+    plug :put_secure_browser_headers, %{
+      "content-security-policy" =>
+        "default-src 'self' https://*.eventbrite.com https://*.fontawesome.com; font-src fonts.gstatic.com https://*.fontawesome.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://*.eventbrite.com https://*.fontawesome.com"
+    }
+
     plug :fetch_current_user
   end
 
