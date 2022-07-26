@@ -50,6 +50,14 @@ defmodule OhioElixirWeb.Router do
     end
   end
 
+  scope "/", OhioElixirWeb do
+    pipe_through [:browser]
+
+    delete "/users/log_out", UserSessionController, :delete
+
+    live "/proposal_submission", ProposalSubmissionLive
+  end
+
   ## Authentication routes
 
   scope "/", OhioElixirWeb do
@@ -70,11 +78,8 @@ defmodule OhioElixirWeb.Router do
     end
 
     resources "/speakers", SpeakerController
-  end
 
-  scope "/", OhioElixirWeb do
-    pipe_through [:browser]
-
-    delete "/users/log_out", UserSessionController, :delete
+    live "/proposals", ProposalLive, :index
+    live "/proposals/:id", ProposalLive, :show
   end
 end

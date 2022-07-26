@@ -1,0 +1,52 @@
+<div class="container">
+  <h1>Proposals</h1>
+
+<%= if @live_action == :show do %>
+   <.modal return_to={Routes.proposal_path(@socket, :index)}>
+      <.show
+        id={@proposal.id}
+        socket={@socket}
+        proposal={@proposal}
+        action={@live_action}
+        return_to={Routes.proposal_path(@socket, :index)}
+        proposal: @proposal
+      />
+    </.modal>
+<% end %>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Desired month</th>
+
+        <th></th>
+      </tr>
+    </thead>
+    <tbody id="proposals">
+      <%= for proposal <- @proposals do %>
+        <tr id={"proposal-#{proposal.id}"}>
+          <td><%= proposal.speaker_name %></td>
+          <td><%= proposal.speaker_email %></td>
+          <td><%= proposal.desired_month %></td>
+
+          <td>
+            <span>
+              <%= live_patch("Show", to: Routes.proposal_path(@socket, :show, proposal)) %>
+            </span>
+            |
+            <span>
+              <%= link("Delete",
+                to: "#",
+                phx_click: "delete",
+                phx_value_id: proposal.id,
+                data: [confirm: "Are you sure?"]
+              ) %>
+            </span>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

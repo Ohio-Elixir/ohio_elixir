@@ -189,4 +189,75 @@ defmodule OhioElixir.EventsTest do
       assert %Ecto.Changeset{} = Events.change_speaker(speaker)
     end
   end
+
+  describe "proposals" do
+    alias OhioElixir.Events.Proposal
+
+    import OhioElixir.EventsFixtures
+
+    @invalid_attrs %{desired_month: nil, speaker_email: nil, speaker_name: nil, summary: nil}
+
+    test "list_proposals/0 returns all proposals" do
+      proposal = proposal_fixture()
+      assert Events.list_proposals() == [proposal]
+    end
+
+    test "get_proposal!/1 returns the proposal with given id" do
+      proposal = proposal_fixture()
+      assert Events.get_proposal!(proposal.id) == proposal
+    end
+
+    test "create_proposal/1 with valid data creates a proposal" do
+      valid_attrs = %{
+        desired_month: "some desired_month",
+        speaker_email: "some speaker_email",
+        speaker_name: "some speaker_name",
+        summary: "some summary"
+      }
+
+      assert {:ok, %Proposal{} = proposal} = Events.create_proposal(valid_attrs)
+      assert proposal.desired_month == "some desired_month"
+      assert proposal.speaker_email == "some speaker_email"
+      assert proposal.speaker_name == "some speaker_name"
+      assert proposal.summary == "some summary"
+    end
+
+    test "create_proposal/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Events.create_proposal(@invalid_attrs)
+    end
+
+    test "update_proposal/2 with valid data updates the proposal" do
+      proposal = proposal_fixture()
+
+      update_attrs = %{
+        desired_month: "some updated desired_month",
+        speaker_email: "some updated speaker_email",
+        speaker_name: "some updated speaker_name",
+        summary: "some updated summary"
+      }
+
+      assert {:ok, %Proposal{} = proposal} = Events.update_proposal(proposal, update_attrs)
+      assert proposal.desired_month == "some updated desired_month"
+      assert proposal.speaker_email == "some updated speaker_email"
+      assert proposal.speaker_name == "some updated speaker_name"
+      assert proposal.summary == "some updated summary"
+    end
+
+    test "update_proposal/2 with invalid data returns error changeset" do
+      proposal = proposal_fixture()
+      assert {:error, %Ecto.Changeset{}} = Events.update_proposal(proposal, @invalid_attrs)
+      assert proposal == Events.get_proposal!(proposal.id)
+    end
+
+    test "delete_proposal/1 deletes the proposal" do
+      proposal = proposal_fixture()
+      assert {:ok, %Proposal{}} = Events.delete_proposal(proposal)
+      assert_raise Ecto.NoResultsError, fn -> Events.get_proposal!(proposal.id) end
+    end
+
+    test "change_proposal/1 returns a proposal changeset" do
+      proposal = proposal_fixture()
+      assert %Ecto.Changeset{} = Events.change_proposal(proposal)
+    end
+  end
 end
