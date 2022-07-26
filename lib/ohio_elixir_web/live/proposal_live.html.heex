@@ -1,18 +1,19 @@
 <div class="container">
   <h1>Proposals</h1>
 
-<%= if @live_action == :show do %>
-   <.modal return_to={Routes.proposal_path(@socket, :index)}>
+  <%= if @live_action == :show do %>
+    <.modal return_to={Routes.proposal_path(@socket, :index)}>
       <.show
         id={@proposal.id}
         socket={@socket}
         proposal={@proposal}
         action={@live_action}
         return_to={Routes.proposal_path(@socket, :index)}
-        proposal: @proposal
+        proposal:
+        @proposal
       />
     </.modal>
-<% end %>
+  <% end %>
 
   <table>
     <thead>
