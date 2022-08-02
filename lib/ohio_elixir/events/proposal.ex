@@ -1,4 +1,5 @@
 defmodule OhioElixir.Events.Proposal do
+  @moduledoc false
   use Ecto.Schema
   import Ecto.Changeset
 
