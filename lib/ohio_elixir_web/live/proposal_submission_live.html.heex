@@ -1,43 +1,51 @@
 <div class="container">
-  <h2>Submit a Proposal</h2>
+  <%= unless @submitted do %>
+    <h2>Submit a Proposal</h2>
 
-  <p>
-    Do you have an awesome idea and want to share it with the community? Maybe you'd like to get feedback on a
-    conference talk you're workshopping? Well, we're always looking for speakers and would love to hear from you.
-    Please submit your info below, and we'll be in touch!
-  </p>
-  <.form let={f} for={@changeset} id="proposal-form" phx-change="validate" phx-submit="save">
-    <%= label(f, :speaker_name, "Name") %>
-    <%= text_input(f, :speaker_name) %>
-    <%= error_tag(f, :speaker_name) %>
+    <p>
+      Do you have an awesome idea and want to share it with the community? Maybe you'd like to get feedback on a
+      conference talk you're workshopping? Well, we're always looking for speakers and would love to hear from you.
+      Please submit your info below, and we'll be in touch!
+    </p>
+    <.form let={f} for={@changeset} id="proposal-form" phx-change="validate" phx-submit="save">
+      <%= label(f, :speaker_name, "Name") %>
+      <%= text_input(f, :speaker_name) %>
+      <%= error_tag(f, :speaker_name) %>
 
-    <%= label(f, :speaker_email, "Email") %>
-    <%= email_input(f, :speaker_email) %>
-    <%= error_tag(f, :speaker_email) %>
+      <%= label(f, :speaker_email, "Email") %>
+      <%= email_input(f, :speaker_email) %>
+      <%= error_tag(f, :speaker_email) %>
 
-    <%= label(f, :desired_month, "What month are you wanting to present?") %>
-    <%= select(f, :desired_month, [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December"
-    ]) %>
-    <%= error_tag(f, :desired_month) %>
+      <%= label(f, :desired_month, "What month are you wanting to present?") %>
+      <%= select(f, :desired_month, [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
+      ]) %>
+      <%= error_tag(f, :desired_month) %>
 
-    <%= label(f, :summary, "Tell us a bit about your topic") %>
-    <%= textarea(f, :summary) %>
-    <%= error_tag(f, :summary) %>
+      <%= label(f, :summary, "Tell us a bit about your topic") %>
+      <%= textarea(f, :summary) %>
+      <%= error_tag(f, :summary) %>
 
-    <div>
-      <%= submit("Save", phx_disable_with: "Saving...") %>
-    </div>
-  </.form>
+      <div>
+        <%= submit("Save", phx_disable_with: "Saving...") %>
+      </div>
+    </.form>
+  <% else %>
+    <h2>Thank you!</h2>
+
+    <p>
+      We've received your submission and will be in contact soon!
+    </p>
+  <% end %>
 </div>

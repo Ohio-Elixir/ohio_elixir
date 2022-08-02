@@ -11,6 +11,7 @@ defmodule OhioElixirWeb.ProposalSubmissionLive do
     socket =
       socket
       |> assign(:changeset, changeset)
+      |> assign(:submitted, false)
 
     {:ok, socket}
   end
@@ -28,10 +29,7 @@ defmodule OhioElixirWeb.ProposalSubmissionLive do
   def handle_event("save", %{"proposal" => proposal_params}, socket) do
     case Events.create_proposal(proposal_params) do
       {:ok, _proposal} ->
-        {:noreply,
-         socket
-         |> put_flash(:info, "We've recieved your proposal and will be in touch shortly!")
-         |> redirect(to: Routes.page_path(socket, :index))}
+        {:noreply, assign(socket, :submitted, true)}
 
       {:error, %Ecto.Changeset{} = changeset} ->
         {:noreply, assign(socket, changeset: changeset)}
