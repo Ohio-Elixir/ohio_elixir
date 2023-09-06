@@ -45,7 +45,7 @@ defmodule OhioElixirWeb do
   def live_view do
     quote do
       use Phoenix.LiveView,
-        layout: {OhioElixirWeb.LayoutView, "live.html"}
+        layout: {OhioElixirWeb.LayoutView, :live}
 
       unquote(view_helpers())
     end
@@ -81,8 +81,7 @@ defmodule OhioElixirWeb do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
-      # Import LiveView helpers (live_render, live_component, live_patch, etc)
-      import Phoenix.LiveView.Helpers
+      import Phoenix.Component
       import OhioElixirWeb.LiveHelpers
 
       # Import basic rendering functionality (render, render_layout, etc)
