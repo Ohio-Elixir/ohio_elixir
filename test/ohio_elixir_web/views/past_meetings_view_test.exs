@@ -9,12 +9,12 @@ defmodule OhioElixirWeb.PastMeetingsViewTest do
   @tag social_link: "test_url"
   test "links speaker name to social link when one is available", %{speaker: speaker} do
     assert View.speaker_link(speaker) ==
-             {:safe, '<a href="test_url" target="_blank">some name</a><br>'}
+             {:safe, ~c"<a href=\"test_url\" target=\"_blank\">some name</a><br>"}
   end
 
   @tag social_link: nil
   test "returns speaker name if no social link is available", %{speaker: speaker} do
-    assert View.speaker_link(speaker) == {:safe, 'some name<br>'}
+    assert View.speaker_link(speaker) == {:safe, ~c"some name<br>"}
   end
 
   defp create_speaker(ctx) do
