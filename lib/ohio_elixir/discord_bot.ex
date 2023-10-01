@@ -8,7 +8,7 @@ defmodule OhioElixirBot.DiscordBot do
   require Logger
 
   def start_link do
-    Consumer.start_link(__MODULE__)
+    # Consumer.start_link(__MODULE__)
   end
 
   # Catchall to keep the bot process from crashing on one of the many unhandled
