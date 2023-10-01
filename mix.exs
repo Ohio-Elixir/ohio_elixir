@@ -6,7 +6,7 @@ defmodule OhioElixir.MixProject do
       app: :ohio_elixir,
       version: "0.1.0",
       dialyzer: [plt_add_apps: [:nostrum]],
-      elixir: "~> 1.13.3",
+      elixir: "~> 1.15",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
