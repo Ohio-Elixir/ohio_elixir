@@ -35,17 +35,17 @@ defmodule OhioElixir.Application do
     :ok
   end
 
-  defp maybe_start_discord_bot do
-    if should_start?(OhioElixirBot.DiscordBot) do
-      {:ok, _} = Application.ensure_all_started(:nostrum)
+  # defp maybe_start_discord_bot do
+  #   if should_start?(OhioElixirBot.DiscordBot) do
+  #     {:ok, _} = Application.ensure_all_started(:nostrum)
+  #
+  #     [OhioElixirBot.DiscordBot]
+  #   else
+  #     []
+  #   end
+  # end
 
-      [OhioElixirBot.DiscordBot]
-    else
-      []
-    end
-  end
-
-  defp should_start?(process) do
-    Application.get_env(:ohio_elixir, process, [])[:enabled] == true
-  end
+  # defp should_start?(process) do
+  #   Application.get_env(:ohio_elixir, process, [])[:enabled] == true
+  # end
 end
