@@ -17,7 +17,7 @@ config :logger, level: :info
 config :ohio_elixir, OhioElixirWeb.Endpoint,
   # Possibly not needed, but doesn't hurt
   http: [port: {:system, "PORT"}],
-  url: [host: "ohioelixir.com", port: 443],
+  url: [host: "www.ohioelixir.com", port: 443],
   secret_key_base: Map.fetch!(System.get_env(), "SECRET_KEY_BASE"),
   server: true,
   cache_static_manifest: "priv/static/cache_manifest.json"
