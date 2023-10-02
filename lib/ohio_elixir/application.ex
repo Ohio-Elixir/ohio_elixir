@@ -6,20 +6,21 @@ defmodule OhioElixir.Application do
   use Application
 
   def start(_type, _args) do
-    children =
-      [
-        # Start the Ecto repository
-        OhioElixir.Repo,
-        # Start the Telemetry supervisor
-        OhioElixirWeb.Telemetry,
-        # Start the PubSub system
-        {Phoenix.PubSub, name: OhioElixir.PubSub},
-        # Start the Endpoint (http/https)
-        OhioElixirWeb.Endpoint,
-        # Start a worker by calling: OhioElixir.Worker.start_link(arg)
-        # {OhioElixir.Worker, arg}
-        {Registry, keys: :duplicate, name: Registry.EventsPubSub, id: Registry.EventsPubSub}
-      ] ++ maybe_start_discord_bot()
+    children = [
+      # Start the Ecto repository
+      OhioElixir.Repo,
+      # Start the Telemetry supervisor
+      OhioElixirWeb.Telemetry,
+      # Start the PubSub system
+      {Phoenix.PubSub, name: OhioElixir.PubSub},
+      # Start the Endpoint (http/https)
+      OhioElixirWeb.Endpoint,
+      # Start a worker by calling: OhioElixir.Worker.start_link(arg)
+      # {OhioElixir.Worker, arg}
+      {Registry, keys: :duplicate, name: Registry.EventsPubSub, id: Registry.EventsPubSub}
+    ]
+
+    # ++ maybe_start_discord_bot()
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
