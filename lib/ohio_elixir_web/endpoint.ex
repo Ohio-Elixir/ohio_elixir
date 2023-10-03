@@ -24,7 +24,7 @@ defmodule OhioElixirWeb.Endpoint do
     at: "/",
     from: :ohio_elixir,
     gzip: false,
-    only: ~w(css fonts images js favicon.ico robots.txt)
+    only: OhioElixirWeb.static_paths()
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
