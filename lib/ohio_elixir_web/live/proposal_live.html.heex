@@ -34,7 +34,9 @@
 
           <td>
             <span>
-              <%= live_patch("Show", to: Routes.proposal_path(@socket, :show, proposal)) %>
+              <.link patch={Routes.proposal_path(@socket, :show, proposal)}>
+                Show
+              </.link>
             </span>
             |
             <span>

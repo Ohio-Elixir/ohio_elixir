@@ -45,7 +45,11 @@ defmodule OhioElixirWeb.ProposalLive do
         </li>
       </ul>
 
-      <span><%= live_redirect("Back", to: Routes.proposal_path(@socket, :index)) %></span>
+      <span>
+        <.link navigate={Routes.proposal_path(@socket, :index)}>
+          Back
+        </.link>
+      </span>
     </div>
     """
   end
