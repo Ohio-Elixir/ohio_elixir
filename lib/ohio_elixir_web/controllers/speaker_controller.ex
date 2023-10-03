@@ -19,7 +19,7 @@ defmodule OhioElixirWeb.SpeakerController do
       {:ok, speaker} ->
         conn
         |> put_flash(:info, "Speaker created successfully.")
-        |> redirect(to: Routes.speaker_path(conn, :show, speaker))
+        |> redirect(to: ~p"/speakers/#{speaker}")
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -44,7 +44,7 @@ defmodule OhioElixirWeb.SpeakerController do
       {:ok, speaker} ->
         conn
         |> put_flash(:info, "Speaker updated successfully.")
-        |> redirect(to: Routes.speaker_path(conn, :show, speaker))
+        |> redirect(to: ~p"/speakers/#{speaker}")
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", speaker: speaker, changeset: changeset)
@@ -57,6 +57,6 @@ defmodule OhioElixirWeb.SpeakerController do
 
     conn
     |> put_flash(:info, "Speaker deleted successfully.")
-    |> redirect(to: Routes.speaker_path(conn, :index))
+    |> redirect(to: ~p"/speakers")
   end
 end

@@ -2,13 +2,13 @@
   <h1>Proposals</h1>
 
   <%= if @live_action == :show do %>
-    <.modal return_to={Routes.proposal_path(@socket, :index)}>
+    <.modal return_to={~p"/proposals"}>
       <.show
         id={@proposal.id}
         socket={@socket}
         proposal={@proposal}
         action={@live_action}
-        return_to={Routes.proposal_path(@socket, :index)}
+        return_to={~p"/proposals"}
         proposal:
         @proposal
       />
@@ -34,7 +34,7 @@
 
           <td>
             <span>
-              <.link patch={Routes.proposal_path(@socket, :show, proposal)}>
+              <.link patch={~p"/proposals/#{proposal}"}>
                 Show
               </.link>
             </span>

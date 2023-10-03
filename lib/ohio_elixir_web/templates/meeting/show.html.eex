@@ -23,16 +23,16 @@
       <ul>
         <%= for speaker <- @meeting.speakers do %>
           <li>
-            <span><%= link speaker.name, to: Routes.speaker_path(@conn, :show, speaker) %></span>
-            <span><%= link "", to: Routes.meeting_path(@conn, :delete, @meeting, speaker_id: speaker.id), class: "fas fa-trash", method: :delete, data: [confirm: "Are you sure?"] %></span>
+            <span><%= link speaker.name, to: ~p"/speakers/#{speaker}" %></span>
+            <span><%= link "", to: ~p"/meetings/#{@meeting}?#{[speaker_id: speaker.id]}", class: "fas fa-trash", method: :delete, data: [confirm: "Are you sure?"] %></span>
           </li>
         <% end %>
       </ul>
     </li>
   </ul>
 
-  <%= render "add_speaker_form.html", Map.put(assigns, :action, Routes.meeting_path(@conn, :update, @meeting)) %>
+  <%= render "add_speaker_form.html", Map.put(assigns, :action, ~p"/meetings/#{@meeting}") %>
 
-  <span><%= link "Edit", to: Routes.meeting_path(@conn, :edit, @meeting) %></span> |
-  <span><%= link "Back", to: Routes.meeting_path(@conn, :index) %></span>
+  <span><%= link "Edit", to: ~p"/meetings/#{@meeting}/edit" %></span> |
+  <span><%= link "Back", to: ~p"/meetings" %></span>
 </div>

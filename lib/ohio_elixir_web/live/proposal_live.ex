@@ -46,7 +46,7 @@ defmodule OhioElixirWeb.ProposalLive do
       </ul>
 
       <span>
-        <.link navigate={Routes.proposal_path(@socket, :index)}>
+        <.link navigate={~p"/proposals"}>
           Back
         </.link>
       </span>

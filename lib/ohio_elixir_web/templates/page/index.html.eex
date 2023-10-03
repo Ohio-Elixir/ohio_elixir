@@ -2,7 +2,7 @@
   <h1 class="title">OHIO ELIXI<span class="last-letter">R</span></h1>
 </div>
 
-<img src="<%= Routes.static_path(@conn, "/images/transition.svg") %>" class="transition"/>
+<img src="<%= ~p"/images/transition.svg" %>" class="transition"/>
 
 <%= render "_about.html", conn: @conn %>
 <%= render "_meetings.html", conn: @conn, meeting: @meeting %>
