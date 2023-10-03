@@ -7,7 +7,7 @@
       conference talk you're workshopping? Well, we're always looking for speakers and would love to hear from you.
       Please submit your info below, and we'll be in touch!
     </p>
-    <.form let={f} for={@changeset} id="proposal-form" phx-change="validate" phx-submit="save">
+    <.form :let={f} for={@changeset} id="proposal-form" phx-change="validate" phx-submit="save">
       <%= label(f, :speaker_name, "Name") %>
       <%= text_input(f, :speaker_name) %>
       <%= error_tag(f, :speaker_name) %>

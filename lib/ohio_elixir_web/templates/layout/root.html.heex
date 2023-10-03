@@ -29,10 +29,12 @@
         <div class="nav-container">
           <ul class="nav-links">
             <li class="nav-item">
-              <%= live_redirect("Speaker Proposal",
-                to: Routes.live_path(@conn, OhioElixirWeb.ProposalSubmissionLive),
-                class: "nav-link"
-              ) %>
+              <.link
+                navigate={Routes.live_path(@conn, OhioElixirWeb.ProposalSubmissionLive)}
+                class="nav-link"
+              >
+                Speaker Proposal
+              </.link>
             </li>
             <li class="nav-item">
               <%= link("Next Meeting",
