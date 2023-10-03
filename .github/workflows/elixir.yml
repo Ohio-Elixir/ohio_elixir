@@ -2,9 +2,9 @@ name: Elixir CI
 
 on:
   push:
-    branches: [master]
+    branches: [main]
   pull_request:
-    branches: [master]
+    branches: [main]
 
 jobs:
   build:
@@ -85,11 +85,11 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
     needs: build
     steps:
       - uses: actions/checkout@v1
       - run: sudo pip install gigalixir --ignore-installed six
       - run: gigalixir login -e "${{ secrets.GIGALIXIR_EMAIL }}" -y -p "${{ secrets.GIGALIXIR_PASSWORD }}"
       - run: gigalixir git:remote ${{ secrets.GIGALIXIR_APP_NAME }}
-      - run: git push -f gigalixir HEAD:refs/heads/master
+      - run: git push -f gigalixir HEAD:refs/heads/main
