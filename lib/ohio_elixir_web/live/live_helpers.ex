@@ -12,7 +12,7 @@ defmodule OhioElixirWeb.LiveHelpers do
 
   ## Examples
 
-      <.modal return_to={Routes.proposal_path(@socket, :index)}>
+      <.modal return_to={~p"/proposals"}>
         <.live_component
           module={OhioElixirWeb.ProposalLive.FormComponent}
           id={@proposal.id || :new}

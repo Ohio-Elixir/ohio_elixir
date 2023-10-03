@@ -19,7 +19,7 @@ defmodule OhioElixirWeb.MeetingController do
       {:ok, meeting} ->
         conn
         |> put_flash(:info, "Meeting created successfully.")
-        |> redirect(to: Routes.meeting_path(conn, :show, meeting))
+        |> redirect(to: ~p"/meetings/#{meeting}")
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -47,12 +47,12 @@ defmodule OhioElixirWeb.MeetingController do
       {:ok, meeting} ->
         conn
         |> put_flash(:info, "Speaker added successfully.")
-        |> redirect(to: Routes.meeting_path(conn, :show, meeting))
+        |> redirect(to: ~p"/meetings/#{meeting}")
 
       {:error, %Ecto.Changeset{}} ->
         conn
         |> put_flash(:error, "Could not add speaker.")
-        |> redirect(to: Routes.meeting_path(conn, :show, meeting))
+        |> redirect(to: ~p"/meetings/#{meeting}")
     end
   end
 
@@ -63,7 +63,7 @@ defmodule OhioElixirWeb.MeetingController do
       {:ok, meeting} ->
         conn
         |> put_flash(:info, "Meeting updated successfully.")
-        |> redirect(to: Routes.meeting_path(conn, :show, meeting))
+        |> redirect(to: ~p"/meetings/#{meeting}")
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", meeting: meeting, changeset: changeset)
@@ -78,12 +78,12 @@ defmodule OhioElixirWeb.MeetingController do
       {:ok, meeting} ->
         conn
         |> put_flash(:info, "Speaker removed successfully.")
-        |> redirect(to: Routes.meeting_path(conn, :show, meeting))
+        |> redirect(to: ~p"/meetings/#{meeting}")
 
       {:error, %Ecto.Changeset{}} ->
         conn
         |> put_flash(:error, "Could not add speaker.")
-        |> redirect(to: Routes.meeting_path(conn, :show, meeting))
+        |> redirect(to: ~p"/meetings/#{meeting}")
     end
   end
 
@@ -93,7 +93,7 @@ defmodule OhioElixirWeb.MeetingController do
 
     conn
     |> put_flash(:info, "Meeting deleted successfully.")
-    |> redirect(to: Routes.meeting_path(conn, :index))
+    |> redirect(to: ~p"/meetings")
   end
 
   defp date_to_naive(meeting) do

@@ -6,5 +6,5 @@
     At this time we are a fully remote organization which gives us the unique opportunity to open our virtual doors to folks outside of Ohio. RSVP for our upcoming meeting, join our slack, and come say "Hello!".
   </p>
 
-  <img src="<%= Routes.static_path(@conn, "/images/pair-programming.svg") %>" class="pair-programming"/>
+  <img src="<%= ~p"/images/pair-programming.svg" %>" class="pair-programming"/>
 </div>

@@ -11,12 +11,12 @@ defmodule OhioElixirWeb.ActivationController do
       {:ok, _meeting} ->
         conn
         |> put_flash(:info, "Active status updated")
-        |> redirect(to: Routes.meeting_path(conn, :index))
+        |> redirect(to: ~p"/meetings")
 
       {:error, %Ecto.Changeset{}} ->
         conn
         |> put_flash(:error, "Could not update to active.")
-        |> redirect(to: Routes.meeting_path(conn, :index))
+        |> redirect(to: ~p"/meetings")
     end
   end
 end

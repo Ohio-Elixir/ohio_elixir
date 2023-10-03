@@ -18,20 +18,20 @@
         <td><%= meeting.title %></td>
         <td>
           <%# Using javascript to autosubmit this when checked %>
-          <%= form_for @conn, Routes.meeting_activation_path(@conn, :create, meeting), fn f -> %>
+          <%= form_for @conn, ~p"/meetings", fn f -> %>
             <%= checkbox f, :active, active_options(meeting.active) %>
           <% end %>
         </td>
 
         <td>
-          <span><%= link "Show", to: Routes.meeting_path(@conn, :show, meeting) %></span> |
-          <span><%= link "Edit", to: Routes.meeting_path(@conn, :edit, meeting) %></span> |
-          <span><%= link "Delete", to: Routes.meeting_path(@conn, :delete, meeting), method: :delete, data: [confirm: "Are you sure?"] %></span>
+          <span><%= link "Show", to: ~p"/meetings/#{meeting}" %></span> |
+          <span><%= link "Edit", to: ~p"/meetings/#{meeting}/edit" %></span> |
+          <span><%= link "Delete", to: ~p"/meetings/#{meeting}", method: :delete, data: [confirm: "Are you sure?"] %></span>
         </td>
       </tr>
   <% end %>
     </tbody>
   </table>
 
-  <span><%= link "New Meeting", to: Routes.meeting_path(@conn, :new) %></span>
+  <span><%= link "New Meeting", to: ~p"/meetings/new" %></span>
 </div>
