@@ -11,7 +11,7 @@ defmodule OhioElixirWeb.ActivationControllerTest do
       conn = post(conn, Routes.meeting_activation_path(conn, :create, meeting), active: "true")
 
       assert redirected_to(conn) == Routes.meeting_path(conn, :index)
-      assert get_flash(conn, :info) == "Active status updated"
+      assert Phoenix.Flash.get(conn.assigns.flash, :info) == "Active status updated"
     end
   end
 

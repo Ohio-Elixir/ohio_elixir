@@ -27,6 +27,8 @@ defmodule OhioElixirWeb.ConnCase do
       import Phoenix.ConnTest
       import OhioElixirWeb.ConnCase
 
+      use OhioElixirWeb, :verified_routes
+
       alias OhioElixirWeb.Router.Helpers, as: Routes
 
       # The default endpoint for testing

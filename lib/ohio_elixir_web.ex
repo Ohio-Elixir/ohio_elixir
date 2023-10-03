@@ -17,6 +17,8 @@ defmodule OhioElixirWeb do
   and import those modules here.
   """
 
+  def static_paths, do: ~w(css fonts images js favicon.ico robots.txt)
+
   def controller do
     quote do
       use Phoenix.Controller, namespace: OhioElixirWeb
@@ -24,6 +26,8 @@ defmodule OhioElixirWeb do
       import Plug.Conn
       import OhioElixirWeb.Gettext
       alias OhioElixirWeb.Router.Helpers, as: Routes
+
+      unquote(verified_routes())
     end
   end
 
@@ -91,6 +95,17 @@ defmodule OhioElixirWeb do
       import OhioElixirWeb.ErrorHelpers
       import OhioElixirWeb.Gettext
       alias OhioElixirWeb.Router.Helpers, as: Routes
+
+      unquote(verified_routes())
+    end
+  end
+
+  def verified_routes do
+    quote do
+      use Phoenix.VerifiedRoutes,
+        endpoint: OhioElixirWeb.Endpoint,
+        router: OhioElixirWeb.Router,
+        statics: OhioElixirWeb.static_paths()
     end
   end
 
