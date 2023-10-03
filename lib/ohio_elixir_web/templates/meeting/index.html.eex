@@ -12,24 +12,24 @@
       </tr>
     </thead>
     <tbody>
-  <%= for meeting <- @meetings do %>
-      <tr>
-        <td><%= OhioElixirWeb.ViewHelpers.Date.format_date_time(meeting.date) %></td>
-        <td><%= meeting.title %></td>
-        <td>
-          <%# Using javascript to autosubmit this when checked %>
-          <%= form_for @conn, ~p"/meetings", fn f -> %>
-            <%= checkbox f, :active, active_options(meeting.active) %>
-          <% end %>
-        </td>
+      <%= for meeting <- @meetings do %>
+        <tr>
+          <td><%= OhioElixirWeb.ViewHelpers.Date.format_date_time(meeting.date) %></td>
+          <td><%= meeting.title %></td>
+          <td>
+            <%# Using javascript to autosubmit this when checked %>
+            <%= form_for @conn, ~p"/meetings/#{meeting.id}/activate", fn f -> %>
+              <%= checkbox f, :active, active_options(meeting.active) %>
+            <% end %>
+          </td>
 
-        <td>
-          <span><%= link "Show", to: ~p"/meetings/#{meeting}" %></span> |
-          <span><%= link "Edit", to: ~p"/meetings/#{meeting}/edit" %></span> |
-          <span><%= link "Delete", to: ~p"/meetings/#{meeting}", method: :delete, data: [confirm: "Are you sure?"] %></span>
-        </td>
-      </tr>
-  <% end %>
+          <td>
+            <span><%= link "Show", to: ~p"/meetings/#{meeting}" %></span> |
+            <span><%= link "Edit", to: ~p"/meetings/#{meeting}/edit" %></span> |
+            <span><%= link "Delete", to: ~p"/meetings/#{meeting}", method: :delete, data: [confirm: "Are you sure?"] %></span>
+          </td>
+        </tr>
+      <% end %>
     </tbody>
   </table>
 
