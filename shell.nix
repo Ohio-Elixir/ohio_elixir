@@ -5,7 +5,7 @@ pkgs.mkShell {
     gnumake
     erlangR26
     elixir_1_15
-    nodejs_20
+    nodejs_16
     inotify-tools
   ];
   shellHook = ''
