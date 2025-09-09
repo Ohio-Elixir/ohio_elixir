@@ -18,6 +18,21 @@ defmodule OhioElixirWeb.Router do
     plug :fetch_current_user
   end
 
+  pipeline :browser_override do
+    plug :accepts, ["html"]
+    plug :put_root_layout, {OhioElixirWeb.LayoutView, :root}
+    plug :fetch_session
+    plug :fetch_flash
+    plug :protect_from_forgery
+
+    plug :put_secure_browser_headers, %{
+      "content-security-policy" =>
+        "default-src 'self' https://*.eventbrite.com https://*.fontawesome.com; font-src fonts.gstatic.com https://*.fontawesome.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com https://cdnjs.cloudflare.com https://unpkg.com; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://*.eventbrite.com https://*.fontawesome.com https://instant.page"
+    }
+
+    plug :fetch_current_user
+  end
+
   pipeline :api do
     plug :accepts, ["json"]
   end
@@ -25,8 +40,13 @@ defmodule OhioElixirWeb.Router do
   scope "/", OhioElixirWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
     get "/past_meetings", PastMeetingsController, :index
+  end
+
+  scope "/", OhioElixirWeb do
+    pipe_through :browser_override
+
+    get "/", PageController, :home
   end
 
   # Other scopes may use custom stacks.
