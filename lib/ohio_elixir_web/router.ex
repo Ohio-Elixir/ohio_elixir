@@ -40,6 +40,8 @@ defmodule OhioElixirWeb.Router do
   scope "/", OhioElixirWeb do
     pipe_through :browser
 
+    get "/page/index", PageController, :index
+
     get "/past_meetings", PastMeetingsController, :index
   end
 
