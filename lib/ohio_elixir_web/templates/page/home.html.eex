@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ohio Elixir User Group</title>
+  
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/@tailwindcss/typography@0.4.1/dist/typography.min.css" rel="stylesheet">
+  
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <style>
+    .font-dm { font-family: 'DM Sans', sans-serif; }
+    .container { max-width: 1200px; }
+    #events { scroll-margin-top: 20px; }
+  </style>
+</head>
+
+<body class="bg-white font-dm">
+  <nav class="bg-white border-b border-gray-200 py-6">
+    <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
+      <h1 class="text-xl font-bold text-gray-900 mb-4 md:mb-0">
+        <a href="/" class="hover:text-purple-600">Ohio Elixir</a>
+      </h1>
+      <div class="flex space-x-8">
+        <a href="#about" class="text-gray-700 hover:text-gray-900">About</a>
+        <a href="#events" class="text-gray-700 hover:text-gray-900">Events</a>
+        <a href="#join" class="text-gray-700 hover:text-gray-900">Join</a>
+      </div>
+    </div>
+  </nav>
+    
+
+  <!-- Mobile Events Section - Above the fold -->
+  <section class="md:hidden py-6" id="events">
+    <div class="container mx-auto px-6">
+      <h3 class="text-xl font-bold text-gray-900 mb-2">Upcoming Events</h3>
+      <div class="border border-gray-300 p-4">
+        <div class="text-sm text-gray-500 mb-2">September 23, 2025 • 6:00 PM ET</div>
+        <h4 class="text-lg font-bold mb-3 text-gray-900">Ohio Elixir Meetup</h4>
+        <p class="text-gray-600 text-sm mb-4">Join us for our Global Elixir Meetup Week event! Choose to attend in person or online.</p>
+        <div class="flex flex-col gap-2">
+           <a href="https://www.eventbrite.com/e/ohio-global-elixir-meetup-tickets-1680369613749?aff=oddtdtcreator" target="_blank" class="bg-purple-700 text-white px-4 py-2 text-sm font-medium hover:bg-purple-800 transition-colors">Join In Person</a>
+           <a href="https://www.eventbrite.com/e/ohio-global-elixir-meetup-online-tickets-1680384087039?aff=oddtdtcreator" target="_blank" class="border border-purple-700 text-purple-700 px-4 py-2 text-sm font-medium hover:bg-purple-700 hover:text-white transition-all">Join Online</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <header class="py-8 md:py-12 text-center">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-6xl font-bold text-gray-900 mb-4 md:mb-6 leading-tight">Building the Future<br>with Elixir</h2>
+        <p class="text-base md:text-lg text-gray-600 mb-6 md:mb-8 max-w-2xl mx-auto">Join Ohio's vibrant community of Elixir developers, where innovation meets collaboration in the heart of the Midwest.</p>
+        
+        <!-- Mobile: Single CTA -->
+        <div class="md:hidden mb-6">
+          <a href="/proposal_submission" class="border border-purple-700 text-purple-700 px-6 py-3 font-medium hover:bg-purple-700 hover:text-white transition-all">Want to Speak?</a>
+        </div>
+        
+        <!-- Desktop: Multiple CTAs -->
+        <div class="hidden md:flex flex-col sm:flex-row gap-4 justify-center mb-12">
+          <a href="#join" class="bg-purple-700 text-white px-6 py-3 font-medium hover:bg-purple-800 transition-colors">Join Our Community</a>
+          <a href="/proposal_submission" class="border border-purple-700 text-purple-700 px-6 py-3 font-medium hover:bg-purple-700 hover:text-white transition-all">Want to Speak?</a>
+        </div>
+      </div>
+      
+      <!-- Desktop Events - Above the fold -->
+      <div class="hidden md:block max-w-4xl mx-auto" id="events-desktop">
+        <h3 class="text-2xl font-bold text-gray-900 mb-6">Upcoming Events</h3>
+        <div class="border border-gray-300">
+          <div class="p-4 text-left">
+            <div class="text-sm text-gray-500 mb-2">September 23, 2025 • 6:00 PM ET</div>
+            <h4 class="text-lg font-bold mb-2 text-gray-900">Ohio Global Elixir Meetup</h4>
+            <p class="text-gray-600 text-sm mb-4">Join us for our Global Elixir Meetup Week event where Brian Meeker will be presenting on how to "Refurbish Your Creaky Test Suite"! Choose to attend in person or online.</p>
+            <div class="flex flex-col sm:flex-row gap-2">
+              <a href="https://www.eventbrite.com/e/ohio-global-elixir-meetup-tickets-1680369613749?aff=oddtdtcreator" target="_blank" class="bg-purple-700 text-white px-4 py-2 text-sm font-medium hover:bg-purple-800 transition-colors">Join In Person</a>
+              <a href="https://www.eventbrite.com/e/ohio-global-elixir-meetup-online-tickets-1680384087039?aff=oddtdtcreator" target="_blank" class="border border-purple-700 text-purple-700 px-4 py-2 text-sm font-medium hover:bg-purple-700 hover:text-white transition-all">Join Online</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-6 py-8">
+
+    <section id="about" class="mb-20">
+      <div class="grid md:grid-cols-2 gap-16 items-center">
+        <div>
+          <h3 class="text-4xl font-bold mb-6 text-gray-900">Who We Are</h3>
+          <p class="text-gray-600 leading-relaxed mb-4">Ohio Elixir is a community group comprised of anyone and everyone interested in the Elixir ecosystem. We host monthly meetings where guest speakers present Elixir-related content, as well as occasional show and tell nights where anyone can talk about what they've been working on or ask questions.</p>
+          <p class="text-gray-600 leading-relaxed">
+            At this time we are a fully remote organization which gives us the unique opportunity to open our virtual doors to folks outside of Ohio. RSVP for our upcoming meeting, join our Discord, and come say "Hello!".
+          </p>
+        </div>
+        <div class="grid grid-cols-2 border border-gray-300">
+          <div class="p-6 border-r border-gray-300 border-b border-gray-300">
+            <h4 class="text-lg font-bold mb-3 text-gray-900">Monthly Meetups</h4>
+            <p class="text-gray-600 text-sm">Regular gatherings with talks and discussions</p>
+          </div>
+          <div class="p-6 border-b border-gray-300">
+            <h4 class="text-lg font-bold mb-3 text-gray-900">Remote First</h4>
+            <p class="text-gray-600 text-sm">Accessible to developers across Ohio and beyond</p>
+          </div>
+          <div class="p-6 border-r border-gray-300">
+            <h4 class="text-lg font-bold mb-3 text-gray-900">Show & Tell</h4>
+            <p class="text-gray-600 text-sm">Share your projects and learn from others</p>
+          </div>
+          <div class="p-6">
+            <h4 class="text-lg font-bold mb-3 text-gray-900">Community</h4>
+            <p class="text-gray-600 text-sm">Connect with like-minded developers</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-gray-50 border-t border-gray-200 py-16" id="join">
+    <div class="container mx-auto px-6">
+      <div class="max-w-2xl mx-auto text-center">
+        <h3 class="text-2xl font-bold mb-4 text-gray-900">Join Our Community</h3>
+        <p class="text-gray-600 mb-8">Connect with Ohio Elixir developers and stay updated on upcoming meetups.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+          <a href="https://discord.gg/JVVSwSNpK6" class="btn-primary" target="_blank">Join Discord</a>
+          <a href="https://github.com/ohio-elixir" class="btn-secondary" target="_blank">GitHub</a>
+          <a href="https://bsky.app/profile/ohioelixir.bsky.social" class="btn-secondary" target="_blank">Bluesky</a>
+        </div>
+        <div class="border-t border-gray-300 pt-8">
+          <p class="text-sm text-gray-500">© 2025 Ohio Elixir Community</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
